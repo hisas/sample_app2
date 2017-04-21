@@ -22,6 +22,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec', require: false
   gem 'terminal-notifier-guard'
+  gem 'capybara'
+  gem 'pry-rails'
 end
 
 group :development do
