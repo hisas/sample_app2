@@ -1,0 +1,7 @@
+test:
+  adapter: mysql2
+  host: localhost
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  database: test
+  username: ubuntu
