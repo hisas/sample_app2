@@ -10,7 +10,7 @@ dependencies:
         timeout: 180
 database:
   pre:
-    - mv config/database.yml.ci config/database.yml
+    - mv config/database.ci.yml config/database.yml
   override:
     - bundle exec rails db:create db:schema:load RAILS_ENV=test
     - bundle exec rails db:migrate RAILS_ENV=test
