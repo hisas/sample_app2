@@ -17,6 +17,10 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec', require: false
+  gem 'terminal-notifier-guard'
 end
 
 group :development do
