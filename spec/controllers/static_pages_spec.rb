@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "test static_pages_controller", type: :feature do
+describe "test static_pages_controller", type: :controller do
   it "should get home" do
     visit root_path
     expect(page).to have_http_status(:success)
