@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "test users_controller", type: :feature do
+describe "test users_controller", type: :controller do
   it "should get new" do
     visit signup_path
     expect(page).to have_http_status(:success)
