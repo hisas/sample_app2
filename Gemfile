@@ -26,6 +26,7 @@ group :development, :test do
   gem 'terminal-notifier-guard'
   gem 'capybara'
   gem 'pry-rails'
+  gem "show_me_the_cookies"
 end
 
 group :development do
