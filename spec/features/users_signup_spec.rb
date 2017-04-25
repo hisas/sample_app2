@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe "test sign up", type: :feature do
+
   it "should test invalid signup information" do
     visit signup_path
     user_count = User.count
@@ -22,5 +23,7 @@ describe "test sign up", type: :feature do
     click_on 'Create my account'
     expect(User.count).to eq(user_count + 1)
     expect(page).to have_content 'Welcome to the Sample App!'
+    expect(page).not_to have_link 'Log in', href: login_path
+    expect(page).to have_link 'Log out', href: logout_path
   end
 end
