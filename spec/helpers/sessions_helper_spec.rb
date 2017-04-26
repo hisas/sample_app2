@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe SessionsHelper, type: :helper do
   before do
-    @user = create(:user)
+    @user = create(:michael)
     remember(@user)
   end
 
