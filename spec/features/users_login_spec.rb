@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "test login", type: :feature do
   before do
-    @user = create(:user)
+    @user = create(:michael)
   end
 
   it "should login with invalid information" do
