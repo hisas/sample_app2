@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   before do
@@ -73,6 +73,6 @@ RSpec.describe User, type: :model do
   end
 
   it "authenticated? should return false for a user with nil digest" do
-    expect(@user.authenticated?('')).not_to eq true
+    expect(@user.authenticated?("")).not_to eq true
   end
 end
