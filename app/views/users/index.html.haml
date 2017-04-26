@@ -1,0 +1,6 @@
+- provide(:title, 'All users')
+%h1 All users
+= paginate @users
+%ul.users
+  = render @users
+= paginate @users
