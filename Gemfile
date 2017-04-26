@@ -15,7 +15,7 @@ gem "jbuilder", "~> 2.5"
 gem "mysql2"
 gem "bootstrap-sass"
 gem "bcrypt"
-gem "haml"
+gem "haml", github: "haml"
 
 group :development, :test do
   gem "sqlite3"
@@ -28,7 +28,6 @@ group :development, :test do
   gem "pry-rails"
   gem "show_me_the_cookies"
   gem "rubocop", require: false
-  gem "rubocop-ci", git: "https://github.com/ad2games/rubocop-ci"
 end
 
 group :development do
@@ -37,6 +36,7 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "erb2haml"
+  gem "html2haml", github: "haml/html2haml"
 end
 
 group :test do
