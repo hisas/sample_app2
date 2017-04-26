@@ -26,6 +26,7 @@ group :development, :test do
   gem 'terminal-notifier-guard'
   gem 'capybara'
   gem 'pry-rails'
+  gem "show_me_the_cookies"
   gem 'rubocop', require: false
   gem 'rubocop-ci', git: 'https://github.com/ad2games/rubocop-ci'
 end
