@@ -15,6 +15,7 @@ gem "jbuilder", "~> 2.5"
 gem "mysql2"
 gem "bootstrap-sass"
 gem "bcrypt"
+gem "haml"
 
 group :development, :test do
   gem "sqlite3"
@@ -35,6 +36,7 @@ group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "erb2haml"
 end
 
 group :test do
