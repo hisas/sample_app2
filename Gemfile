@@ -5,45 +5,45 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", "~> 5.1.0.rc2"
-gem "puma", "~> 3.7"
-gem "uglifier", ">= 1.3.0"
-gem "coffee-rails", "~> 4.2"
-gem "jquery-rails"
-gem "turbolinks", "~> 5"
-gem "jbuilder", "~> 2.5"
-gem "mysql2"
-gem "bootstrap-sass"
 gem "bcrypt"
+gem "bootstrap-sass"
+gem "coffee-rails", "~> 4.2"
 gem "haml", github: "haml"
+gem "jbuilder", "~> 2.5"
+gem "jquery-rails"
+gem "mysql2"
+gem "puma", "~> 3.7"
+gem "rails", "~> 5.1.0.rc2"
+gem "turbolinks", "~> 5"
+gem "uglifier", ">= 1.3.0"
 
 group :development, :test do
-  gem "sqlite3"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "rspec-rails", "~> 3.5"
+  gem "capybara"
   gem "factory_girl_rails"
   gem "guard-rspec", require: false
-  gem "terminal-notifier-guard"
-  gem "capybara"
   gem "pry-rails"
-  gem "show_me_the_cookies"
+  gem "rspec-rails", "~> 3.5"
   gem "rubocop", require: false
+  gem "show_me_the_cookies"
+  gem "sqlite3"
+  gem "terminal-notifier-guard"
 end
 
 group :development do
-  gem "web-console", ">= 3.3.0"
+  gem "erb2haml"
+  gem "html2haml", github: "haml/html2haml"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
-  gem "erb2haml"
-  gem "html2haml", github: "haml/html2haml"
+  gem "web-console", ">= 3.3.0"
 end
 
 group :test do
-  gem "rails-controller-testing"
-  gem "minitest-reporters"
   gem "guard"
   gem "guard-minitest"
+  gem "minitest-reporters"
+  gem "rails-controller-testing"
 end
 
 group :production do
