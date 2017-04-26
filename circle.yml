@@ -17,4 +17,4 @@ database:
 test:
   override:
     - bundle exec rspec spec/
-    - bundle exec rake rubocop
+    - bundle exec rubocop -c .rubocop.yml
