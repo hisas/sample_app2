@@ -201,6 +201,8 @@ GEM
     ruby_dep (1.5.0)
     sass (3.4.23)
     shellany (0.0.1)
+    show_me_the_cookies (3.1.0)
+      capybara (~> 2.0)
     slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
@@ -260,6 +262,7 @@ DEPENDENCIES
   rails (~> 5.1.0.rc2)
   rails-controller-testing
   rspec-rails (~> 3.5)
+  show_me_the_cookies
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

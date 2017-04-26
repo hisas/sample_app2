@@ -30,4 +30,21 @@ describe "test login", type: :feature do
     expect(page).not_to have_link 'Profile', href: user_path(@user)
   end
 
+  it "login with remembering" do
+    visit login_path
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: 'password'
+    check 'Remember me on this computer'
+    click_button 'Log in'
+    expect(get_me_the_cookie('remember_token')).not_to eq nil
+  end
+
+  it "login without remembering" do
+    visit login_path
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: 'password'
+    click_button 'Log in'
+    expect(get_me_the_cookie('remember_token')).to eq nil
+  end
+
 end
