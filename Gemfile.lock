@@ -19,6 +19,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    action_args (2.2.1)
     actioncable (5.1.0.rc2)
       actionpack (= 5.1.0.rc2)
       nio4r (~> 2.0)
@@ -295,6 +296,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_args
   bcrypt
   bootstrap-sass
   byebug
