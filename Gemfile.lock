@@ -178,6 +178,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (2.0.5)
@@ -317,6 +320,7 @@ DEPENDENCIES
   minitest-reporters
   mysql2
   pg
+  pry-byebug
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.0.rc2)
