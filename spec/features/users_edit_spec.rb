@@ -37,5 +37,4 @@ describe "test users edit", type: :feature do
     expect(@user.name).to have_content "Foo Bar"
     expect(@user.email).to have_content "foo@bar.com"
   end
-
 end

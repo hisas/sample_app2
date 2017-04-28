@@ -34,5 +34,4 @@ describe "test users index", type: :feature do
     visit users_path
     expect(page).not_to have_selector "a", text: "delete"
   end
-
 end
