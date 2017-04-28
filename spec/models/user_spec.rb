@@ -75,4 +75,12 @@ RSpec.describe User, type: :model do
   it "authenticated? should return false for a user with nil digest" do
     expect(@user.authenticated?(:remember, "")).not_to eq true
   end
+
+  it "associated microposts should be destroyed" do
+    @user.save
+    @user.microposts.create!(content: "Lorem ipsum")
+    count = Micropost.count
+    @user.destroy
+    expect(Micropost.count).to eq count - 1
+  end
 end
