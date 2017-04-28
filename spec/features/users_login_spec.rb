@@ -46,5 +46,4 @@ describe "test login", type: :feature do
     click_button "Log in"
     expect(get_me_the_cookie("remember_token")).to eq nil
   end
-
 end
