@@ -51,4 +51,14 @@ describe "test users_controller", type: :controller do
     expect(count).to eq(User.count)
     expect(current_path).to eq(root_path)
   end
+
+  it "should redirect following when not logged in" do
+    visit following_user_path(@user)
+    expect(current_path).to eq(login_path)
+  end
+
+  it "should redirect followers when not logged in" do
+    visit followers_user_path(@user)
+    expect(current_path).to eq(login_path)
+  end
 end
