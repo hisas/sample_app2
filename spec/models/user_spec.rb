@@ -83,4 +83,33 @@ RSpec.describe User, type: :model do
     @user.destroy
     expect(Micropost.count).to eq count - 1
   end
+
+  it "should follow and unfollow a user" do
+    michael = create(:michael)
+    archer = create(:archer)
+    expect(michael.following?(archer)).to eq false
+    michael.follow(archer)
+    expect(michael.following?(archer)).to eq true
+    expect(archer.followers.include?(michael)).to eq true
+    michael.unfollow(archer)
+    expect(michael.following?(archer)).to eq false
+  end
+
+  it "feed should have the right posts" do
+    michael = create(:michael)
+    archer = create(:archer)
+    lana = create(:lana)
+    # フォローしているユーザーの投稿を確認
+    lana.microposts.each do |post_following|
+      expect(michael.feed.include?(post_following)).to eq true
+    end
+    # 自分自身の投稿を確認
+    michael.microposts.each do |post_self|
+      expect(michael.feed.include?(post_self)).to eq true
+    end
+    # フォローしていないユーザーの投稿を確認
+    archer.microposts.each do |post_unfollowed|
+      expect(michael.feed.include?(post_unfollowed)).to eq true
+    end
+  end
 end

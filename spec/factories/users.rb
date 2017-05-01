@@ -8,20 +8,29 @@ FactoryGirl.define do
     activated_at Time.zone.now
 
     factory :michael do
+      id 1
       name "Michael Example"
       email "michael@example.com"
       admin true
     end
 
     factory :archer do
+      id 2
       name "Sterling Archer"
       email "duchess@example.gov"
     end
 
     factory :lana do
+      id 3
       name "Lana Kane"
       email "hands@example.gov"
       activated false
+    end
+
+    factory :malory do
+      id 4
+      name "Malory Archer"
+      email "boss@example.gov"
     end
   end
 end
