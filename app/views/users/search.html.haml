@@ -1,3 +1,13 @@
-%h1 Search result
-%ul.users
-  = render @users
+- provide(:title, "Search result for #{params[:name]}")
+%h1 Search result for #{params[:name]}
+= form_tag("/users/search", method: "GET", enforce_utf8: false) do
+  = label_tag :name, "Name"
+  = text_field_tag :name, '', placeholder: "Please enter name"
+  = submit_tag  'Search'
+- if @users.present?
+  = paginate @users
+  %ul.users
+    = render @users
+  = paginate @users
+- else
+  %h3 no match for #{params[:name]}
