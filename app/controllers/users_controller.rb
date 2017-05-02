@@ -65,6 +65,10 @@ class UsersController < ApplicationController
     render "show_follow"
   end
 
+  def search
+    @users = User.name_like(params[:name]).page params[:page]
+  end
+
   private
     def correct_user
       @user = User.find(params[:id])
