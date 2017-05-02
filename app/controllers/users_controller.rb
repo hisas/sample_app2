@@ -65,6 +65,11 @@ class UsersController < ApplicationController
     render "show_follow"
   end
 
+  def search
+    # @users = User.where("name like '%" + params[:name] + "%'")
+    @users = User.find_by(name: params[:name])
+  end
+
   private
     def correct_user
       @user = User.find(params[:id])
