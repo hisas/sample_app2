@@ -5,13 +5,6 @@ describe "test users edit", type: :feature do
     @user = create(:michael)
   end
 
-  def log_in_as(user)
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
-  end
-
   it "unsuccessful edit" do
     log_in_as(@user)
     visit edit_user_path(@user)

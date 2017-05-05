@@ -7,13 +7,6 @@ describe "test users index", type: :feature do
     30.times { create(:user) }
   end
 
-  def log_in_as(user)
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
-  end
-
   it "index as admin including pagination and delete links" do
     log_in_as(@michael)
     visit users_path

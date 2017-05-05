@@ -6,13 +6,6 @@ describe "test users_controller", type: :controller do
     @other_user = create(:archer)
   end
 
-  def log_in_as(user)
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
-  end
-
   it "should get new" do
     visit signup_path
     expect(page).to have_http_status(:success)
