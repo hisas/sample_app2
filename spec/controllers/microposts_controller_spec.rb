@@ -7,13 +7,6 @@ describe MicropostsController, type: :controller do
     @other_user = create(:archer)
   end
 
-  def log_in_as(user)
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
-  end
-
   it "should redirect create when not logged in" do
     count = Micropost.count
     page.driver.submit :post, microposts_path, params: { micropost: { content: "Lorem ipsum" } }
