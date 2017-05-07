@@ -20,6 +20,11 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def search
+    @micropost  = current_user.microposts.build
+    @feed_items = Micropost.content_like(params[:content]).page params[:page]
+  end
+
   private
     def correct_user
       @micropost = current_user.microposts.find_by(id: params[:id])
