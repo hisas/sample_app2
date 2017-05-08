@@ -5,7 +5,7 @@ FactoryGirl.define do
     password "password"
     password_digest User.digest("password")
     activated true
-    activated_at Time.zone.now
+    activated_at Time.current
 
     factory :michael do
       id 1
