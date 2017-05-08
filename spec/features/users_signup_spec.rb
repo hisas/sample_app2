@@ -5,13 +5,6 @@ describe "test sign up", type: :feature do
     ActionMailer::Base.deliveries.clear
   end
 
-  def log_in_as(user)
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
-  end
-
   it "should test invalid signup information" do
     visit signup_path
     user_count = User.count

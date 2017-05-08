@@ -8,13 +8,6 @@ describe "test users search", type: :feature do
     30.times { create(:user) }
   end
 
-  def log_in_as(user)
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
-  end
-
   it "ユーザーを名前の完全一致で検索できる" do
     log_in_as(@michael)
     visit "/users"

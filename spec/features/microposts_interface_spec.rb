@@ -6,13 +6,6 @@ describe "test microposts interface", type: :feature do
     30.times { @user.microposts.create(attributes_for(:micropost)) }
   end
 
-  def log_in_as(user)
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
-  end
-
   it "micropost interface" do
     log_in_as(@user)
     visit root_path
