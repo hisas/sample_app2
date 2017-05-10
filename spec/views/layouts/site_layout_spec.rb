@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test site layout", type: :view do
+describe "site layout", type: :view do
   it "should have correct layout links" do
     visit root_path
     expect(page).to have_link "Home", href: root_path

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test login", type: :feature do
+describe "users login", type: :feature do
   before do
     @user = create(:michael)
   end

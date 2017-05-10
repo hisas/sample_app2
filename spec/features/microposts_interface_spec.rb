@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test microposts interface", type: :feature do
+describe "microposts interface", type: :feature do
   before do
     @user = create(:michael)
     30.times { @user.microposts.create(attributes_for(:micropost)) }

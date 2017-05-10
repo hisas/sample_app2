@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test users search", type: :feature do
+describe "users search", type: :feature do
   before do
     @michael = create(:michael)
     @archer = create(:archer)
