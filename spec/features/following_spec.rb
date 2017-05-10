@@ -37,28 +37,20 @@ describe "test following", type: :feature do
   end
 
   it "should follow a user the standard way" do
-    count = @michael.following.count
-    page.driver.submit :post, relationships_path, followed_id: @archer.id
-    expect(@michael.following.count).to eq count + 1
+    expect { page.driver.submit :post, relationships_path, followed_id: @archer.id }.to change { @michael.following.count }.by(1)
   end
 
   it "should follow a user with Ajax" do
-    count = @michael.following.count
-    page.driver.submit :post, relationships_path, xhr: true, followed_id: @archer.id
-    expect(@michael.following.count).to eq count + 1
+    expect { page.driver.submit :post, relationships_path, xhr: true, followed_id: @archer.id }.to change { @michael.following.count }.by(1)
   end
 
   it "should unfollow a user the standard way" do
     @michael.active_relationships.create(id: 5, followed_id: 2)
-    count = @michael.following.count
-    page.driver.submit :delete, "/relationships/5", params: {}
-    expect(@michael.following.count).to eq count - 1
+    expect { page.driver.submit :delete, "/relationships/5", params: {} }.to change { @michael.following.count }.by(-1)
   end
 
   it "should unfollow a user with Ajax" do
     @michael.active_relationships.create(id: 5, followed_id: 2)
-    count = @michael.following.count
-    page.driver.submit :delete, "/relationships/5", xhr: true, params: {}
-    expect(@michael.following.count).to eq count - 1
+    expect { page.driver.submit :delete, "/relationships/5", xhr: true, params: {} }.to change { @michael.following.count }.by(-1)
   end
 end

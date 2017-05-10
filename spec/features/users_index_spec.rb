@@ -17,9 +17,7 @@ describe "test users index", type: :feature do
         expect(page).to have_link "delete", href: user_path(user)
       end
     end
-    count = User.count
-    page.driver.submit :delete, user_path(@archer), {}
-    expect(User.count).to eq count - 1
+    expect { page.driver.submit :delete, user_path(@archer), {} }.to change { User.count }.by(-1)
   end
 
   it "index as non-admin" do
