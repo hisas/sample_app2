@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test following", type: :feature do
+describe "following", type: :feature do
   before do
     @michael = create(:michael)
     @archer = create(:archer)
@@ -12,10 +12,7 @@ describe "test following", type: :feature do
     @lana.active_relationships.create(id: 3, followed_id: 1)
     @archer.active_relationships.create(id: 4, followed_id: 1)
 
-    visit login_path
-    fill_in "Email", with: @michael.email
-    fill_in "Password", with: @michael.password
-    click_button "Log in"
+    log_in_as(@michael)
   end
 
   it "following page" do

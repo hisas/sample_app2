@@ -1,7 +1,7 @@
 require "rails_helper"
 include ApplicationHelper
 
-describe "test sign up", type: :feature do
+describe "users profile", type: :feature do
   before do
     @user = create(:michael)
     30.times { @user.microposts.create(attributes_for(:micropost)) }

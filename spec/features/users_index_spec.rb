@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test users index", type: :feature do
+describe "users index", type: :feature do
   before do
     @michael = create(:michael)
     @archer = create(:archer)
