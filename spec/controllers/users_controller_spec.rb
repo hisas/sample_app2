@@ -31,17 +31,13 @@ describe "test users_controller", type: :controller do
   end
 
   it "should redirect destroy when not logged in" do
-    count = User.count
-    page.driver.submit :delete, user_path(@user), {}
-    expect(count).to eq(User.count)
+    expect { page.driver.submit :delete, user_path(@user), {} }.to change { User.count }.by(0)
     expect(current_path).to eq(login_path)
   end
 
   it "should redirect destroy when logged in as a non-admin" do
     log_in_as(@other_user)
-    count = User.count
-    page.driver.submit :delete, user_path(@user), {}
-    expect(count).to eq(User.count)
+    expect { page.driver.submit :delete, user_path(@user), {} }.to change { User.count }.by(0)
     expect(current_path).to eq(root_path)
   end
 

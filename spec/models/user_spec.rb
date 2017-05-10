@@ -79,9 +79,7 @@ RSpec.describe User, type: :model do
   it "associated microposts should be destroyed" do
     @user.save
     @user.microposts.create!(content: "Lorem ipsum")
-    count = Micropost.count
-    @user.destroy
-    expect(Micropost.count).to eq count - 1
+    expect { @user.destroy }.to change { Micropost.count }.by(-1)
   end
 
   it "should follow and unfollow a user" do
