@@ -1,6 +1,7 @@
 {
   "name": "sample_app2",
   "scripts": {
+    "postdeploy": "bin/setup"
   },
   "env": {
     "LANG": {
