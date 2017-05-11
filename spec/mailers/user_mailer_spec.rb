@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test user_mailer", type: :mailer do
+describe UserMailer, type: :mailer do
   it "account_activation" do
     user = create(:michael)
     user.activation_token = User.new_token

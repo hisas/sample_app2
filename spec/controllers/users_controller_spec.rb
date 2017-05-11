@@ -1,6 +1,8 @@
 require "rails_helper"
 
-describe "test users_controller", type: :controller do
+describe UsersController, type: :controller do
+  render_views
+
   before do
     @user = create(:michael)
     @other_user = create(:archer)

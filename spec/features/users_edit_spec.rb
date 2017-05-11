@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test users edit", type: :feature do
+describe "users edit", type: :feature do
   before do
     @user = create(:michael)
   end

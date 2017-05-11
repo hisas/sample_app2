@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "test password_resets", type: :feature do
+describe "password_resets", type: :feature do
   before do
     ActionMailer::Base.deliveries.clear
     @user = create(:michael)
@@ -33,6 +33,5 @@ describe "test password_resets", type: :feature do
     expect(current_path).to eq root_path
     # メールアドレスもトークンも有効
     visit edit_password_reset_path(@user.reset_token, email: @user.email, id: @user.id)
-    # expect(page).to have_selector "input[name=email][type=hidden]"
   end
 end

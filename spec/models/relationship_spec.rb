@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Relationship, type: :model do
+describe Relationship, type: :model do
   before do
     @michael = create(:michael)
     @archer = create(:archer)
