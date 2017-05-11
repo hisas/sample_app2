@@ -1,6 +1,7 @@
 {
   "name": "sample_app2",
   "scripts": {
+    "postdeploy": "bundle exec rails db:schema:load db:seed"
   },
   "env": {
     "LANG": {
