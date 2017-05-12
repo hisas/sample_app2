@@ -39,6 +39,7 @@ end
 
 group :development do
   gem "brakeman", require: false
+  gem "bullet"
   gem "erb2haml"
   gem "html2haml", github: "haml/html2haml"
   gem "listen", ">= 3.0.5", "< 3.2"

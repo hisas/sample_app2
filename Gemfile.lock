@@ -72,6 +72,9 @@ GEM
       sass (>= 3.3.4)
     brakeman (3.6.1)
     builder (3.2.3)
+    bullet (5.5.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     capybara (2.14.0)
       addressable
@@ -439,6 +442,7 @@ GEM
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.2.1)
+    uniform_notifier (1.10.0)
     web-console (3.5.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -459,6 +463,7 @@ DEPENDENCIES
   bcrypt
   bootstrap-sass
   brakeman
+  bullet
   byebug
   capybara
   carrierwave
