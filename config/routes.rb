@@ -10,11 +10,15 @@ Rails.application.routes.draw do
   get    "users/search",   to: "users#search"
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :microposts
+    end
+  end
+  resources :microposts, only: [:create, :destroy] do
+    collection do
+      get :search
     end
   end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
 end

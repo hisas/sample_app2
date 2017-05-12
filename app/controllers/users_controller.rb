@@ -69,6 +69,11 @@ class UsersController < ApplicationController
     @users = User.name_like(params[:name]).page params[:page]
   end
 
+  def microposts
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.content_like(params[:content]).page params[:page]
+  end
+
   private
     def correct_user
       @user = User.find(params[:id])

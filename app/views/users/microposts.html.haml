@@ -8,12 +8,14 @@
     %section.stats
       = render 'shared/stats'
   .col-md-8
-    = render 'follow_form' if logged_in?
-    - if @user.microposts.any?
-      %h3 Micropost Search
-      = render 'shared/search'
-      %h3
-        Microposts (#{@user.microposts.count})
+    = render 'users/follow_form' if logged_in?
+    %h3 Micropost Search
+    = render 'shared/search'
+    %h3
+      Microposts (#{@microposts.count})
+    - if @microposts.any?
       %ol.microposts
         = render @microposts
       = paginate @microposts
+    - else
+      %h3 no match for #{params[:content]}
