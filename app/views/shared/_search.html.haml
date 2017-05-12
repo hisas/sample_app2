@@ -1,0 +1,4 @@
+= form_tag("microposts/search", method: "GET", enforce_utf8: false) do
+  = label_tag :content, "Content"
+  = text_field_tag :content, '', placeholder: "Please enter content"
+  = submit_tag  'Search'

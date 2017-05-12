@@ -18,11 +18,13 @@ FactoryGirl.define do
     factory :cat_video do
       content "Sad cats are sad: http://youtu.be/PKffm2uI4dk"
       created_at 2.hours.ago
+      user_id 3
     end
 
     factory :most_recent do
       content "Writing a short test"
       created_at Time.current
+      user_id 4
     end
   end
 end
