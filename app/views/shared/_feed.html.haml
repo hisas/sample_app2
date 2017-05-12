@@ -2,3 +2,5 @@
   %ol.microposts
     = render @feed_items
   = paginate @feed_items
+- else
+  %h3 no match for #{params[:content]}
