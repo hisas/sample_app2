@@ -8,6 +8,8 @@ require "rspec/rails"
 require "capybara/rspec"
 require "capybara/rails"
 
+Dir.glob("spec/steps/**/*steps.rb") { |f| load f, true }
+
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
 end
