@@ -1,12 +1,14 @@
 require "rails_helper"
 
 describe "users signup", type: :feature do
+  let!(:lana) { create(:lana) }
+
   before do
     ActionMailer::Base.deliveries.clear
+    visit signup_path
   end
 
   it "should test invalid signup information" do
-    visit signup_path
     expect {
       fill_in "Name", with: ""
       fill_in "Email", with: "user@invalid"
@@ -17,7 +19,6 @@ describe "users signup", type: :feature do
   end
 
   it "should test valid signup information" do
-    visit signup_path
     expect {
       fill_in "Name", with: "Example User"
       fill_in "Email", with: "user@example.com"
@@ -26,16 +27,15 @@ describe "users signup", type: :feature do
       click_on "Create my account"
     }.to change { User.count }.by(1)
     expect(ActionMailer::Base.deliveries.size).to eq 1
-    user = create(:lana)
-    expect(user.activated?).not_to eq true
-    log_in_as(user)
+    expect(lana.activated?).not_to eq true
+    log_in_as(lana)
     expect(page).to have_link "Log in", href: login_path
-    visit edit_account_activation_path("invalid token", email: user.email)
+    visit edit_account_activation_path("invalid token", email: lana.email)
     expect(page).to have_link "Log in", href: login_path
-    visit edit_account_activation_path(user.activation_token, email: "wrong")
+    visit edit_account_activation_path(lana.activation_token, email: "wrong")
     expect(page).to have_link "Log in", href: login_path
-    visit edit_account_activation_path(user.activation_token, email: user.email)
-    expect(user.reload.activated?).to eq true
+    visit edit_account_activation_path(lana.activation_token, email: lana.email)
+    expect(lana.reload.activated?).to eq true
     expect(page).not_to have_link "Log in", href: login_path
   end
 end

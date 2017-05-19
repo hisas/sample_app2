@@ -1,25 +1,25 @@
 require "rails_helper"
 
 describe "microposts search", type: :feature do
+  let!(:michael) { create(:michael) }
+  let!(:archer) { create(:archer) }
+  let!(:lana) { create(:lana) }
+  let!(:malory) { create(:malory) }
+
   before do
-    @michael = create(:michael)
-    @archer = create(:archer)
-    @lana = create(:lana)
-    @malory = create(:malory)
+    lana.microposts.create(attributes_for(:cat_video))
+    malory.microposts.create(attributes_for(:most_recent))
+    michael.microposts.create(attributes_for(:orange))
+    michael.microposts.create(attributes_for(:apple))
+    30.times { michael.microposts.create(attributes_for(:micropost)) }
 
-    @lana.microposts.create(attributes_for(:cat_video))
-    @malory.microposts.create(attributes_for(:most_recent))
-    @michael.microposts.create(attributes_for(:orange))
-    @michael.microposts.create(attributes_for(:apple))
-    30.times { @michael.microposts.create(attributes_for(:micropost)) }
-
-    @archer.active_relationships.create(followed_id: 1)
-    @archer.active_relationships.create(followed_id: 3)
-    @archer.active_relationships.create(followed_id: 4)
+    archer.active_relationships.create(followed_id: 1)
+    archer.active_relationships.create(followed_id: 3)
+    archer.active_relationships.create(followed_id: 4)
   end
 
   it "root_pathでマイクロポストをcontentの完全一致で検索できること" do
-    log_in_as(@archer)
+    log_in_as(archer)
     visit root_path
     fill_in :content, with: "Writing a short test!"
     click_button "Search"
@@ -28,8 +28,8 @@ describe "microposts search", type: :feature do
   end
 
   it "user_pathでマイクロポストをcontentの完全一致で検索できること" do
-    log_in_as(@michael)
-    visit "/users/#{@michael.id}"
+    log_in_as(michael)
+    visit "/users/#{michael.id}"
     fill_in :content, with: "I just ate an orange!"
     click_button "Search"
     expect(page).to have_content "I just ate an orange!"
@@ -37,7 +37,7 @@ describe "microposts search", type: :feature do
   end
 
   it "マイクロポストをcontentのあいまい検索で検索できること" do
-    log_in_as(@archer)
+    log_in_as(archer)
     visit root_path
     fill_in :content, with: "!"
     click_button "Search"
@@ -47,7 +47,7 @@ describe "microposts search", type: :feature do
   end
 
   it "合致するマイクロポストがない場合、メッセージを表示" do
-    log_in_as(@archer)
+    log_in_as(archer)
     visit root_path
     fill_in :content, with: "hisas"
     click_button "Search"
@@ -55,7 +55,7 @@ describe "microposts search", type: :feature do
   end
 
   it "合致するマイクロポストが多い場合、ページネーション" do
-    log_in_as(@archer)
+    log_in_as(archer)
     visit root_path
     fill_in :content, with: ""
     click_button "Search"
