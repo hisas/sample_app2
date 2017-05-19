@@ -3,10 +3,8 @@ require "rails_helper"
 describe UsersController, type: :controller do
   render_views
 
-  before do
-    @user = create(:michael)
-    @other_user = create(:archer)
-  end
+  let!(:michael) { create(:michael) }
+  let!(:archer) { create(:archer) }
 
   it "should get new" do
     visit signup_path
@@ -15,14 +13,14 @@ describe UsersController, type: :controller do
   end
 
   it "should redirect edit when not logged in" do
-    visit edit_user_path(@user)
+    visit edit_user_path(michael)
     expect(page).to have_content "Please log in."
     expect(current_path).to eq(login_path)
   end
 
   it "should redirect edit when logged in as wrong user" do
-    log_in_as(@other_user)
-    visit edit_user_path(@user)
+    log_in_as(archer)
+    visit edit_user_path(michael)
     expect(page).not_to have_content "Please log in."
     expect(current_path).to eq(root_path)
   end
@@ -33,23 +31,27 @@ describe UsersController, type: :controller do
   end
 
   it "should redirect destroy when not logged in" do
-    expect { page.driver.submit :delete, user_path(@user), {} }.to change { User.count }.by(0)
+    expect {
+      page.driver.submit :delete, user_path(michael), {}
+    }.to change { User.count }.by(0)
     expect(current_path).to eq(login_path)
   end
 
   it "should redirect destroy when logged in as a non-admin" do
-    log_in_as(@other_user)
-    expect { page.driver.submit :delete, user_path(@user), {} }.to change { User.count }.by(0)
+    log_in_as(archer)
+    expect {
+      page.driver.submit :delete, user_path(michael), {}
+    }.to change { User.count }.by(0)
     expect(current_path).to eq(root_path)
   end
 
   it "should redirect following when not logged in" do
-    visit following_user_path(@user)
+    visit following_user_path(michael)
     expect(current_path).to eq(login_path)
   end
 
   it "should redirect followers when not logged in" do
-    visit followers_user_path(@user)
+    visit followers_user_path(michael)
     expect(current_path).to eq(login_path)
   end
 end

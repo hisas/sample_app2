@@ -1,8 +1,11 @@
 require "rails_helper"
 
 describe "site layout", type: :view do
-  it "should have correct layout links" do
+  before do
     visit root_path
+  end
+
+  it "should have correct layout links" do
     expect(page).to have_link "Home", href: root_path
     expect(page).to have_link "sample app", href: root_path
     expect(page).to have_link "Help", href: help_path

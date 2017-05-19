@@ -1,23 +1,21 @@
 require "rails_helper"
 
 describe Relationship, type: :model do
-  before do
-    @michael = create(:michael)
-    @archer = create(:archer)
-    @relationship = Relationship.new(follower_id: @michael.id, followed_id: @archer.id)
-  end
+  let!(:michael) { create(:michael) }
+  let!(:archer) { create(:archer) }
+  let!(:relationship) { Relationship.new(follower_id: michael.id, followed_id: archer.id) }
 
   it "should be valid" do
-    expect(@relationship).to be_valid
+    expect(relationship).to be_valid
   end
 
   it "should require a follower_id" do
-    @relationship.follower_id = nil
-    expect(@relationship).not_to be_valid
+    relationship.follower_id = nil
+    expect(relationship).not_to be_valid
   end
 
   it "should require a followed_id" do
-    @relationship.followed_id = nil
-    expect(@relationship).not_to be_valid
+    relationship.followed_id = nil
+    expect(relationship).not_to be_valid
   end
 end

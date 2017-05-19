@@ -1,16 +1,17 @@
 require "rails_helper"
 
 describe "users search", type: :feature do
+  let!(:michael) { create(:michael) }
+  let!(:archer) { create(:archer) }
+  let!(:malory) { create(:malory) }
+  let!(:users) { create_list(:user, 30) }
+
   before do
-    @michael = create(:michael)
-    @archer = create(:archer)
-    @malory = create(:malory)
-    30.times { create(:user) }
+    log_in_as(michael)
+    visit "/users"
   end
 
   it "ユーザーを名前の完全一致で検索できる" do
-    log_in_as(@michael)
-    visit "/users"
     fill_in :name, with: "Michael Example"
     click_button "Search"
     expect(page).to have_content "Michael Example"
@@ -18,8 +19,6 @@ describe "users search", type: :feature do
   end
 
   it "ユーザーを名前のあいまい検索で検索できること" do
-    log_in_as(@michael)
-    visit "/users"
     fill_in :name, with: "Archer"
     click_button "Search"
     expect(page).to have_content "Sterling Archer"
@@ -28,16 +27,12 @@ describe "users search", type: :feature do
   end
 
   it "合致するユーザがいない場合、メッセージを表示" do
-    log_in_as(@michael)
-    visit "/users"
     fill_in :name, with: "hisas"
     click_button "Search"
     expect(page).to have_content "no match for hisas"
   end
 
   it "合致するユーザが多い場合、ページネーション" do
-    log_in_as(@michael)
-    visit "/users"
     fill_in :name, with: ""
     click_button "Search"
     expect(page).to have_selector "nav.pagination"
