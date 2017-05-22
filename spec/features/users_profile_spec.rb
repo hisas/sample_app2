@@ -1,7 +1,7 @@
 require "rails_helper"
 include ApplicationHelper
 
-describe "users profile", type: :feature do
+describe "users profile" do
   let!(:michael) { create(:michael) }
 
   before do

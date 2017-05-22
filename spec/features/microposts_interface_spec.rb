@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "microposts interface", type: :feature do
+describe "microposts interface" do
   let!(:michael) { create(:michael) }
 
   before do

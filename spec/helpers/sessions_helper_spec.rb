@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe SessionsHelper, type: :helper do
+describe SessionsHelper do
   let!(:michael) { create(:michael) }
 
   before do

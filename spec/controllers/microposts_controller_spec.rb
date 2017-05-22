@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe MicropostsController, type: :controller do
+describe MicropostsController do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:micropost1) { michael.microposts.create(attributes_for(:orange)) }

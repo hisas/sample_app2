@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "users index", type: :feature do
+describe "users index" do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:users) { create_list(:user, 30) }

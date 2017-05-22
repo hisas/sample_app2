@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "site layout", type: :view do
+describe "site layout" do
   before do
     visit root_path
   end

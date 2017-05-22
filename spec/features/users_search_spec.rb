@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "users search", type: :feature do
+describe "users search" do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:malory) { create(:malory) }

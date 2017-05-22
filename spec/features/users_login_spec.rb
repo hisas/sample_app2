@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "users login", type: :feature do
+describe "users login" do
   let!(:michael) { create(:michael) }
 
   before do

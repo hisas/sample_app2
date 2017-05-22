@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe User, type: :model do
+describe User do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:lana) { create(:lana) }

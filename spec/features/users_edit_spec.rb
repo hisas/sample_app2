@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "users edit", type: :feature do
+describe "users edit" do
   let!(:michael) { create(:michael) }
 
   before do

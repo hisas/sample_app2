@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "following", type: :feature do
+describe "following" do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:lana) { create(:lana) }

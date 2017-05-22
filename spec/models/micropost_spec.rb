@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Micropost, type: :model do
+describe Micropost do
   let!(:michael) { create(:michael) }
   let!(:micropost) { michael.microposts.build(content: "Lorem ipsum") }
 
