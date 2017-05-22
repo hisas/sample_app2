@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe StaticPagesController, type: :controller do
+describe StaticPagesController do
   render_views
 
   it "should get home" do

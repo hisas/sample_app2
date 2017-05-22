@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "microposts search", type: :feature do
+describe "microposts search" do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:lana) { create(:lana) }

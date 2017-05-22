@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Users", type: :request do
+describe "Users" do
   let(:valid_params) { { name: "hisas", email: "hisas@gmail.com", password: "foobar", password_confirmation: "foobar" } }
   let(:invalid_params) { { name: "", email: "", password: "", password_confirmation: "" } }
   let!(:michael) { create(:michael) }

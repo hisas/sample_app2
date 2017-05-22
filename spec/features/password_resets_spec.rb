@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "password_resets", type: :feature do
+describe "password_resets" do
   let!(:michael) { create(:michael) }
 
   before do

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe RelationshipsController, type: :controller do
+describe RelationshipsController do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:lana) { create(:lana) }

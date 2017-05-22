@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "users signup", type: :feature do
+describe "users signup" do
   let!(:lana) { create(:lana) }
 
   before do

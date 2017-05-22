@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Relationship, type: :model do
+describe Relationship do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:relationship) { Relationship.new(follower_id: michael.id, followed_id: archer.id) }
