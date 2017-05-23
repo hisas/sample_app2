@@ -87,6 +87,10 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def send_followed_notification_email(user)
+    UserMailer.followed_notification(self, user).deliver_now
+  end
+
   private
     def downcase_email
       self.email = email.downcase

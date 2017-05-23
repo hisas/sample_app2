@@ -1,0 +1,7 @@
+%h1 You have a new follower
+%p
+  #{@follow_user.name} is now following you on Sample App.
+%p
+  Click on the
+  = link_to "link", user_url(@follow_user)
+  to follow #{@follow_user.name}
