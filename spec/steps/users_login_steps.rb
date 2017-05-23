@@ -31,8 +31,8 @@ step "画面にログアウトURLが表示されること" do
   expect(page).to have_link "Log out", href: logout_path
 end
 
-step "画面にユーザープロフィールURLが表示されること" do
-  expect(page).to have_link "Profile", href: user_path(@user)
+step "画面に自分のタイムラインURLが表示されること" do
+  expect(page).to have_link "My timeline", href: user_path(@user)
 end
 
 step "画面にエラーメッセージが表示されること" do

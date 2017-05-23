@@ -26,10 +26,10 @@ describe UserMailer do
   end
 
   it "followed_notification" do
-    mail = UserMailer.followed_notification(michael, archer)
+    mail = UserMailer.followed_notification(archer, michael)
     expect(mail.subject).to eq("You have a new follower")
-    expect(mail.to).to eq([archer.email])
+    expect(mail.to).to eq([michael.email])
     expect(mail.from).to eq(["noreply@example.com"])
-    expect(mail.body.encoded).to match(michael.name)
+    expect(mail.body.encoded).to match(archer.name)
   end
 end

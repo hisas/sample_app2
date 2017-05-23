@@ -74,6 +74,16 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.content_like(params[:content]).page params[:page]
   end
 
+  def allow_followed_notification
+    current_user.update(allow_followed_notification: true)
+    redirect_to setting_url
+  end
+
+  def disallow_followed_notification
+    current_user.update(allow_followed_notification: false)
+    redirect_to setting_url
+  end
+
   private
     def correct_user
       @user = User.find(params[:id])
