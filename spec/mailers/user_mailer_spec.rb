@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe UserMailer do
   let!(:michael) { create(:michael) }
+  let!(:archer) { create(:archer) }
 
   it "account_activation" do
     michael.activation_token = User.new_token
@@ -22,5 +23,13 @@ describe UserMailer do
     expect(mail.from).to eq(["noreply@example.com"])
     expect(mail.body.encoded).to match(michael.reset_token)
     expect(mail.body.encoded).to match(CGI.escape(michael.email))
+  end
+
+  it "followed_notification" do
+    mail = UserMailer.followed_notification(michael, archer)
+    expect(mail.subject).to eq("You have a new follower")
+    expect(mail.to).to eq([archer.email])
+    expect(mail.from).to eq(["noreply@example.com"])
+    expect(mail.body.encoded).to match(michael.name)
   end
 end
