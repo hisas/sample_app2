@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get    "/help",    to: "static_pages#help"
   get    "/about",   to: "static_pages#about"
   get    "/contact", to: "static_pages#contact"
-  get    "/setting", to: "static_pages#setting"
   get    "/signup",  to: "users#new"
   get    "/login",   to: "sessions#new"
   post   "/login",   to: "sessions#create"
@@ -16,14 +15,19 @@ Rails.application.routes.draw do
     end
     collection do
       get :search
-      post :allow_followed_notification,
-           :disallow_followed_notification
     end
   end
 
   resources :microposts, only: [:create, :destroy] do
     collection do
       get :search
+    end
+  end
+
+  resources :settings, only: :index do
+    collection do
+      post :allow_followed_notification,
+           :disallow_followed_notification
     end
   end
 
