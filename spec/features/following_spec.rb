@@ -20,7 +20,7 @@ describe "following" do
 
   it "following page" do
     visit following_user_path(michael)
-    expect(michael.following.empty?).to eq false
+    expect(michael.following.empty?).to be false
     expect(page).to have_content michael.following.count.to_s
     michael.following.each do |user|
       expect(page).to have_content user.name
@@ -29,7 +29,7 @@ describe "following" do
 
   it "followers page" do
     visit followers_user_path(michael)
-    expect(michael.followers.empty?).to eq false
+    expect(michael.followers.empty?).to be false
     expect(page).to have_content michael.followers.count.to_s
     michael.followers.each do |user|
       expect(page).to have_content user.name
@@ -63,13 +63,13 @@ describe "following" do
   end
 
   it "mail when user allow followed_notification" do
-    expect(hisas.allow_followed_notification).to eq true
+    expect(hisas.allow_followed_notification).to be true
     page.driver.submit :post, relationships_path, followed_id: hisas.id
     expect(ActionMailer::Base.deliveries.size).to eq 1
   end
 
   it "don't mail when user disallow followed_notification" do
-    expect(archer.allow_followed_notification).to eq false
+    expect(archer.allow_followed_notification).to be false
     page.driver.submit :post, relationships_path, followed_id: archer.id
     expect(ActionMailer::Base.deliveries.size).to eq 0
   end
