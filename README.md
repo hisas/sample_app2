@@ -1,6 +1,4 @@
-[![CircleCI](https://circleci.com/gh/hisas/sample_app2/tree/master.svg?style=svg)](https://circleci.com/gh/hisas/sample_app2/tree/master)
-
-# Ruby on Rails チュートリアルのサンプルアプリケーション
+# Sample App [![CircleCI](https://circleci.com/gh/hisas/sample_app2/tree/master.svg?style=svg)](https://circleci.com/gh/hisas/sample_app2/tree/master) [![Code Climate](https://codeclimate.com/github/hisas/sample_app2/badges/gpa.svg)](https://codeclimate.com/github/hisas/sample_app2)
 
 これは、次の教材で作られたサンプルアプリケーションです。   
 [*Ruby on Rails チュートリアル: 実例を使って Rails を学ぼう*](http://railstutorial.jp/)
