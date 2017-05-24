@@ -74,6 +74,13 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.content_like(params[:content]).page params[:page]
   end
 
+  def microposts_feed
+    @user = User.find(params[:id])
+    @microposts = @user.microposts
+
+    render rss: @microposts
+  end
+
   private
     def correct_user
       @user = User.find(params[:id])
