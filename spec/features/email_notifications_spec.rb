@@ -5,7 +5,7 @@ describe "following" do
 
   before do
     log_in_as(hisas)
-    visit setting_path
+    visit settings_path
   end
 
   it "turn on/off followed_notification" do
