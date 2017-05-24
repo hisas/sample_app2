@@ -9,7 +9,7 @@ describe SessionsHelper do
 
   it "current_user returns right user when session is nil" do
     expect(michael).to eq current_user
-    expect(!session[:user_id].nil?).to eq true
+    expect(!session[:user_id].nil?).to be true
   end
 
   it "current_user returns nil when remember digest is wrong" do

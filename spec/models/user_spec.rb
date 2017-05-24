@@ -73,7 +73,7 @@ describe User do
   end
 
   it "authenticated? should return false for a user with nil digest" do
-    expect(user.authenticated?(:remember, "")).not_to eq true
+    expect(user.authenticated?(:remember, "")).not_to be true
   end
 
   it "associated microposts should be destroyed" do
@@ -83,26 +83,26 @@ describe User do
   end
 
   it "should follow and unfollow a user" do
-    expect(michael.following?(archer)).to eq false
+    expect(michael.following?(archer)).to be false
     michael.follow(archer)
-    expect(michael.following?(archer)).to eq true
-    expect(archer.followers.include?(michael)).to eq true
+    expect(michael.following?(archer)).to be true
+    expect(archer.followers.include?(michael)).to be true
     michael.unfollow(archer)
-    expect(michael.following?(archer)).to eq false
+    expect(michael.following?(archer)).to be false
   end
 
   it "feed should have the right posts" do
     # フォローしているユーザーの投稿を確認
     lana.microposts.each do |post_following|
-      expect(michael.feed.include?(post_following)).to eq true
+      expect(michael.feed.include?(post_following)).to be true
     end
     # 自分自身の投稿を確認
     michael.microposts.each do |post_self|
-      expect(michael.feed.include?(post_self)).to eq true
+      expect(michael.feed.include?(post_self)).to be true
     end
     # フォローしていないユーザーの投稿を確認
     archer.microposts.each do |post_unfollowed|
-      expect(michael.feed.include?(post_unfollowed)).to eq true
+      expect(michael.feed.include?(post_unfollowed)).to be true
     end
   end
 end
