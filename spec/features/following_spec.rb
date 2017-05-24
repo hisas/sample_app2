@@ -5,6 +5,7 @@ describe "following" do
   let!(:archer) { create(:archer) }
   let!(:lana) { create(:lana) }
   let!(:malory) { create(:malory) }
+  let!(:hisas) { create(:hisas) }
 
   before do
     michael.active_relationships.create(id: 1, followed_id: 3)
@@ -13,6 +14,8 @@ describe "following" do
     archer.active_relationships.create(id: 4, followed_id: 1)
 
     log_in_as(michael)
+
+    ActionMailer::Base.deliveries.clear
   end
 
   it "following page" do
@@ -57,5 +60,17 @@ describe "following" do
     expect {
       page.driver.submit :delete, "/relationships/5", xhr: true, params: {}
     }.to change { michael.following.count }.by(-1)
+  end
+
+  it "mail when user allow followed_notification" do
+    expect(hisas.allow_followed_notification).to eq true
+    page.driver.submit :post, relationships_path, followed_id: hisas.id
+    expect(ActionMailer::Base.deliveries.size).to eq 1
+  end
+
+  it "don't mail when user disallow followed_notification" do
+    expect(archer.allow_followed_notification).to eq false
+    page.driver.submit :post, relationships_path, followed_id: archer.id
+    expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 end

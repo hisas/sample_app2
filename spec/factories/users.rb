@@ -32,5 +32,12 @@ FactoryGirl.define do
       name "Malory Archer"
       email "boss@example.gov"
     end
+
+    factory :hisas do
+      id 5
+      name "Hisashi Kamezawa"
+      email "hisas@example.gov"
+      allow_followed_notification true
+    end
   end
 end
