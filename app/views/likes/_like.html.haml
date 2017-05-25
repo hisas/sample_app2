@@ -1,0 +1,4 @@
+= button_to micropost_like_path(@micropost.likes.find_by(micropost_id: @micropost.id), micropost_id: @micropost.id), method: :delete, remote: true, id: "button_#{@micropost.id}" do
+  = image_tag("red_heart.png", id: "red_heart_#{@micropost.id}")
+  %span#likes_count(id="#{@micropost.id}")
+    = @micropost.likes.count

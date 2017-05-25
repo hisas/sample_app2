@@ -1,0 +1,4 @@
+= button_to micropost_likes_path(@micropost), remote: true, id: "button_#{@micropost.id}" do
+  = image_tag("gray_heart.png", id: "gray_heart_#{@micropost.id}")
+  %span#likes_count(id="#{@micropost.id}")
+    = @micropost.likes.count
