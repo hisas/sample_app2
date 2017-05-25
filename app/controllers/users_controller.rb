@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
-                        :following, :followers]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :require_login, only: %w[index edit update destroy following followers]
+  before_action :set_user,      only: %w[show edit update destroy following followers microposts microposts_feed]
+  before_action :correct_user,  only: %w[edit update]
+  before_action :admin_user,    only: %w[destroy]
   permits :name, :email, :password, :password_confirmation
 
   def index
@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @microposts = @user.microposts.page params[:page]
   end
 
@@ -31,12 +30,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update(user)
-    @user = User.find(params[:id])
-
     if @user.update_attributes(user)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -46,21 +42,19 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    @user.destroy
     flash[:success] = "User deleted"
     redirect_to users_url
   end
 
   def following
     @title = "Following"
-    @user  = User.find(params[:id])
     @users = @user.following.page params[:page]
     render "show_follow"
   end
 
   def followers
     @title = "Followers"
-    @user  = User.find(params[:id])
     @users = @user.followers.page params[:page]
     render "show_follow"
   end
@@ -70,20 +64,21 @@ class UsersController < ApplicationController
   end
 
   def microposts
-    @user = User.find(params[:id])
     @microposts = @user.microposts.content_like(params[:content]).page params[:page]
   end
 
   def microposts_feed
-    @user = User.find(params[:id])
     @microposts = @user.microposts
 
     render rss: @microposts
   end
 
   private
-    def correct_user
+    def set_user
       @user = User.find(params[:id])
+    end
+
+    def correct_user
       redirect_to(root_url) unless current_user?(@user)
     end
 
