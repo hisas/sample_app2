@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private
-    def logged_in_user
+    def require_login
       unless logged_in?
         store_location
         flash[:danger] = "Please log in."
