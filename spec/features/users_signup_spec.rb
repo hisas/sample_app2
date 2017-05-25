@@ -27,7 +27,7 @@ describe "users signup" do
       click_on "Create my account"
     }.to change { User.count }.by(1)
     expect(ActionMailer::Base.deliveries.size).to eq 1
-    expect(lana.activated?).not_to eq true
+    expect(lana.activated?).not_to be true
     log_in_as(lana)
     expect(page).to have_link "Log in", href: login_path
     visit edit_account_activation_path("invalid token", email: lana.email)
@@ -35,7 +35,7 @@ describe "users signup" do
     visit edit_account_activation_path(lana.activation_token, email: "wrong")
     expect(page).to have_link "Log in", href: login_path
     visit edit_account_activation_path(lana.activation_token, email: lana.email)
-    expect(lana.reload.activated?).to eq true
+    expect(lana.reload.activated?).to be true
     expect(page).not_to have_link "Log in", href: login_path
   end
 end
