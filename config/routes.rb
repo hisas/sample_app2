@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :microposts
+      get :following, :followers, :microposts, :microposts_feed
     end
     collection do
       get :search
