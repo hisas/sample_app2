@@ -24,11 +24,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :settings, only: :index do
-    collection do
-      post :allow_followed_notification,
-           :disallow_followed_notification
-    end
+  resources :settings, only: :index
+  namespace :settings do
+    resources :notifications, only: :index
+    resource :notifications, only: [:create, :update]
   end
 
   resources :account_activations, only: [:edit]
