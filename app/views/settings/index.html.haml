@@ -1,11 +1,4 @@
 - provide(:title, "Setting")
 %h1 Setting
-%p
-  %h3 Email notifications
-  %ul
-    %li
-      = "Email me when someone follow me"
-      - if current_user.allow_followed_notification == true
-        = button_to "Turn off", disallow_followed_notification_settings_path, class: "btn btn-secondary"
-      - else
-        = button_to "Turn on", allow_followed_notification_settings_path, class: "btn btn-primary"
+%ul
+  %li= link_to "Email notifications", settings_notifications_path

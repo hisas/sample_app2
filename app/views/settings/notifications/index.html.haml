@@ -1,0 +1,9 @@
+- provide(:title, "Email notifications Setting")
+%h1 Email notifications Setting
+%ul
+  %li
+    = "Email me when someone follow me"
+    - if current_user.allow_followed_notification?
+      = button_to "Turn off", settings_notifications_path, method: :put, class: "btn btn-secondary"
+    - else
+      = button_to "Turn on", settings_notifications_path, method: :post, class: "btn btn-primary"
