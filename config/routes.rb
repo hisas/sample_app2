@@ -11,14 +11,17 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :microposts, :microposts_feed
+      get :following,
+          :followers,
+          :microposts,
+          :microposts_feed
     end
     collection do
       get :search
     end
   end
 
-  resources :microposts, only: [:create, :destroy] do
+  resources :microposts, only: %i(create destroy) do
     collection do
       get :search
     end
@@ -27,14 +30,14 @@ Rails.application.routes.draw do
   resources :settings, only: :index
   namespace :settings do
     resources :notifications, only: :index
-    resource :notifications, only: [:create, :update]
+    resource  :notifications, only: %i(create update)
   end
 
-  resources :account_activations, only: [:edit]
-  resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :relationships,       only: [:create, :destroy]
+  resources :account_activations, only: :edit
+  resources :password_resets,     only: %i(new create edit update)
+  resources :relationships,       only: %i(create destroy)
 
-  namespace :api, format: "json" do
+  namespace :api, format: :json do
     namespace :v1 do
       resources :users
     end
