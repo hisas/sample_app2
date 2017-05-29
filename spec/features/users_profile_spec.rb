@@ -6,6 +6,7 @@ describe "users profile" do
 
   before do
     30.times { michael.microposts.create(attributes_for(:micropost)) }
+    log_in_as(michael)
     visit user_path(michael)
   end
 
