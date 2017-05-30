@@ -22,12 +22,12 @@ describe "users login" do
     click_button "Log in"
     expect(page).not_to have_link "Log in", href: login_path
     expect(page).to have_link "Log out", href: logout_path
-    expect(page).to have_link "My timeline", href: user_path(michael)
+    expect(page).to have_link "My profile", href: user_path(michael)
     click_on "Log out"
     visit root_path
     expect(page).to have_link "Log in", href: login_path
     expect(page).not_to have_link "Log out", href: logout_path
-    expect(page).not_to have_link "My timeline", href: user_path(michael)
+    expect(page).not_to have_link "My profile", href: user_path(michael)
   end
 
   it "login with remembering" do
