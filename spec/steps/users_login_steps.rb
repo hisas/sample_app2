@@ -32,7 +32,7 @@ step "画面にログアウトURLが表示されること" do
 end
 
 step "画面に自分のタイムラインURLが表示されること" do
-  expect(page).to have_link "My timeline", href: user_path(@user)
+  expect(page).to have_link "My profile", href: user_path(@user)
 end
 
 step "画面にエラーメッセージが表示されること" do
