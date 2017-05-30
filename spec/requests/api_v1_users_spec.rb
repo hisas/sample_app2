@@ -6,10 +6,11 @@ describe "Users" do
   let!(:michael) { create(:michael) }
   let!(:users) { create_list(:user, 30) }
   subject(:json) { JSON.parse(response.body) }
+  let(:headers) { { HTTP_ACCEPT: "application/json", HTTP_AUTHORIZATION: ActionController::HttpAuthentication::Basic.encode_credentials(ENV["BASIC_AUTH_NAME"], ENV["BASIC_AUTH_PASSWORD"]) } }
 
   describe "GET /api/v1/users" do
     before do
-      get api_v1_users_path format: :json
+      get api_v1_users_path, headers: headers
     end
 
     it "ユーザー一覧を取得できること" do
@@ -22,7 +23,7 @@ describe "Users" do
 
   describe "GET /api/v1/users/:id" do
     before do
-      get api_v1_user_path(michael.id, format: :json)
+      get api_v1_user_path(michael.id), headers: headers
     end
 
     it "指定したユーザーを取得できること" do
@@ -35,7 +36,7 @@ describe "Users" do
   describe "POST /api/v1/users" do
     it "ユーザーを作成できること" do
       expect {
-        post api_v1_users_path(format: :json), params: valid_params
+        post api_v1_users_path, headers: headers, params: valid_params
       }.to change { User.count }.by(1)
 
       expect(response.status).to eq 201
@@ -45,7 +46,7 @@ describe "Users" do
 
     it "有効ではないparamsではユーザーを作成できないこと" do
       expect {
-        post api_v1_users_path(format: :json), params: invalid_params
+        post api_v1_users_path, headers: headers, params: invalid_params
       }.to change { User.count }.by(0)
 
       expect(response.status).to eq 422
@@ -56,7 +57,7 @@ describe "Users" do
 
   describe "PATCH /api/v1/users/:id" do
     it "ユーザー情報を編集できること" do
-      patch api_v1_user_path(michael.id, format: :json), params: valid_params
+      patch api_v1_user_path(michael.id), headers: headers, params: valid_params
 
       expect(response.status).to eq 200
       expect(json["name"]).to eq valid_params[:name]
@@ -64,7 +65,7 @@ describe "Users" do
     end
 
     it "有効ではないparamsではユーザーを編集できないこと" do
-      patch api_v1_user_path(michael.id, format: :json), params: invalid_params
+      patch api_v1_user_path(michael.id), headers: headers, params: invalid_params
 
       expect(response.status).to eq 422
       expect(json["name"]).to eq ["can't be blank"]
@@ -75,7 +76,7 @@ describe "Users" do
   describe "DELETE /api/v1/users/:id" do
     it "ユーザーを削除できること" do
       expect {
-        delete api_v1_user_path(michael.id, format: :json), params: valid_params
+        delete api_v1_user_path(michael.id), headers: headers, params: valid_params
       }.to change { User.count }.by(-1)
 
       expect(response.status).to eq 204
