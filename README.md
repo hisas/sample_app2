@@ -6,7 +6,7 @@
 
 ## ライセンス
 
-[Ruby Rails チュートリアル](http://railstutorial.jp/)内にあるすべてのソースコードは
+[Ruby on Rails チュートリアル](http://railstutorial.jp/)内にあるすべてのソースコードは
 MIT ライセンスと Beerware ライセンスのもとに公開されています。
 詳細は [LICENSE.md](LICENSE.md) をご覧ください。
 
