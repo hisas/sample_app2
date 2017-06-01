@@ -25,6 +25,14 @@ class MicropostsController < ApplicationController
     @feed_items = Micropost.content_like(params[:content]).page params[:page]
   end
 
+  def likes
+    @micropost  = current_user.microposts.build
+
+    ids = []
+    current_user.likes.each { |like| ids << like.micropost_id }
+    @feed_items = Micropost.where(id: ids).page params[:page]
+  end
+
   private
     def correct_user
       @micropost = current_user.microposts.find_by(id: params[:id])

@@ -73,6 +73,14 @@ class UsersController < ApplicationController
     render rss: @microposts
   end
 
+  def likes
+    @user = current_user
+
+    ids = []
+    current_user.likes.each { |like| ids << like.micropost_id }
+    @microposts = Micropost.where(id: ids).page params[:page]
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

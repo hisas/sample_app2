@@ -1,10 +1,18 @@
 - if @feed_items.nil?
-  = form_tag("/users/#{@user.id}/microposts/", method: "GET", enforce_utf8: false) do
-    = label_tag :content, "Content"
-    = text_field_tag :content, '', placeholder: "Please enter content"
-    = submit_tag  'Search'
+  %div.col-md-8
+    = form_tag("/users/#{@user.id}/microposts/", method: "GET", enforce_utf8: false) do
+      = label_tag :content, "Content"
+      = text_field_tag :content, '', placeholder: "Please enter content"
+      = submit_tag  'Search'
+  - if current_user?(@user)
+    %div.col-md-4.add-position-br
+      = link_to "Likes", likes_users_path, {method: :get, class: "btn btn-warning"}
 - else
-  = form_tag("/microposts/search", method: "GET", enforce_utf8: false) do
-    = label_tag :content, "Content"
-    = text_field_tag :content, '', placeholder: "Please enter content"
-    = submit_tag  'Search'
+  %div.col-md-8
+    = form_tag("/microposts/search", method: "GET", enforce_utf8: false) do
+      = label_tag :content, "Content"
+      = text_field_tag :content, '', placeholder: "Please enter content"
+      = submit_tag  'Search'
+  - if current_user?(@user)
+    %div.col-md-4.add-position-br
+      = link_to "Likes", likes_microposts_path, {method: :get, class: "btn btn-warning"}
