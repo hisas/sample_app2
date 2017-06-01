@@ -15,6 +15,12 @@ class Micropost < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
+  def liked_users
+    ids = []
+    likes.each { |like| ids << like.user_id }
+    User.where(id: ids)
+  end
+
   private
     def picture_size
       if picture.size > 5.megabytes

@@ -10,4 +10,4 @@
     = micropost.content
     = image_tag micropost.picture.url if micropost.picture?
   %span.like
-    = render 'likes/like_button', micropost: @micropost = micropost
+    = render 'likes/like_form', micropost: @micropost = micropost, users: @users = micropost.liked_users

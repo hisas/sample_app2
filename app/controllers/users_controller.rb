@@ -75,10 +75,7 @@ class UsersController < ApplicationController
 
   def likes
     @user = current_user
-
-    ids = []
-    current_user.likes.each { |like| ids << like.micropost_id }
-    @microposts = Micropost.where(id: ids).page params[:page]
+    @microposts = current_user.liked_microposts.page params[:page]
   end
 
   private

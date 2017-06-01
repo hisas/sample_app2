@@ -93,6 +93,12 @@ class User < ApplicationRecord
     UserMailer.followed_notification(self, user).deliver_now
   end
 
+  def liked_microposts
+    ids = []
+    likes.each { |like| ids << like.micropost_id }
+    Micropost.where(id: ids)
+  end
+
   private
     def downcase_email
       self.email = email.downcase

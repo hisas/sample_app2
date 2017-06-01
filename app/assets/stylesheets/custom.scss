@@ -319,6 +319,21 @@ input {
     margin-right: 10px;
     margin-top: 5px;
   }
+  .button_to {
+    display: inline-block;
+    margin: 5px 5px 0 5px;
+  }
+  span.like {
+    position: relative;
+    display: inline-block;
+  }
+  span.user_avatars {
+    display: inline-flex;
+    position: absolute;
+    margin-top: 0px;
+    bottom: 0px;
+    left: 55px;
+  }
 }
 
 aside {

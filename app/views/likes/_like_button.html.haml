@@ -1,4 +1,4 @@
-#like_button(id="#{@micropost.id}")
+%span.like_button
   - if @micropost.liked_by(current_user.id)
     = render 'likes/like', micropost: @micropost
   - else
