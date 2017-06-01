@@ -11,9 +11,9 @@
     = render 'follow_form' if logged_in?
     - if @user.microposts.any?
       %h3 Micropost Search
-      = render 'shared/search'
-      %h3
-        Microposts (#{@user.microposts.count})
+      %div.micropost_search
+        = render 'shared/search'
+      %h3　Microposts (#{@user.microposts.count})
       %ol.microposts
         = render @microposts
       = paginate @microposts

@@ -17,14 +17,14 @@ Rails.application.routes.draw do
           :microposts_feed
     end
     collection do
-      get :search
+      get :search, :likes
     end
   end
 
   resources :microposts, only: %i(create destroy) do
     resources :likes, only: %i(create destroy)
     collection do
-      get :search
+      get :search, :likes
     end
   end
 

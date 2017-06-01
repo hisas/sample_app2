@@ -3,7 +3,6 @@ require "rails_helper"
 describe "like button" do
   let!(:michael) { create(:michael) }
   let!(:micropost) { michael.microposts.create(attributes_for(:orange)) }
-  subject { page }
 
   before do
     log_in_as(michael)
