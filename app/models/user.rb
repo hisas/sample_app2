@@ -71,10 +71,8 @@ class User < ApplicationRecord
   end
 
   def feed
-    following_ids = "SELECT followed_id FROM relationships
-                     WHERE follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id)
+    following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+    Micropost.includes(:user).where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
   def follow(other_user)
@@ -96,7 +94,7 @@ class User < ApplicationRecord
   def liked_microposts
     ids = []
     likes.each { |like| ids << like.micropost_id }
-    Micropost.where(id: ids)
+    Micropost.includes(:user).where(id: ids)
   end
 
   private
