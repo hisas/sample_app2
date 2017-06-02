@@ -4,6 +4,8 @@ class LikesController < ApplicationController
   def create
     Like.create(user_id: current_user.id, micropost_id: params[:micropost_id])
 
+    @users = Micropost.find(params[:micropost_id]).liked_users
+
     respond_to do |format|
       format.html { redirect_to root_url }
       format.js
@@ -12,6 +14,8 @@ class LikesController < ApplicationController
 
   def destroy
     Like.find_by(user_id: current_user.id, micropost_id: params[:micropost_id]).destroy
+
+    @users = Micropost.find(params[:micropost_id]).liked_users
 
     respond_to do |format|
       format.html { redirect_to root_url }

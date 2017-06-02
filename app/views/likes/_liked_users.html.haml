@@ -1,0 +1,4 @@
+%span.user_avatars
+  - if @users.any?
+    - @users.each do |user|
+      = link_to gravatar_for(user, size: 25), user, id: "avatar_#{user.id}"
