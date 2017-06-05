@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525053133) do
+ActiveRecord::Schema.define(version: 20170605021901) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170525053133) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.string "reply_to"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
@@ -55,7 +56,9 @@ ActiveRecord::Schema.define(version: 20170525053133) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.boolean "allow_followed_notification", default: false, null: false
+    t.string "nickname", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
 
 end

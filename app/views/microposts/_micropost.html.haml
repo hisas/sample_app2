@@ -3,6 +3,7 @@
     = link_to gravatar_for(micropost.user, size: 50), micropost.user
   .user_info
     %span.user= link_to micropost.user.name, micropost.user
+    %span.nickname= "@#{micropost.user.nickname}"
     %span.timestamp
       Posted #{time_ago_in_words(micropost.created_at)} ago.
       - if current_user?(micropost.user)

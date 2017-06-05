@@ -4,7 +4,7 @@ describe User do
   let!(:michael) { create(:michael) }
   let!(:archer) { create(:archer) }
   let!(:lana) { create(:lana) }
-  let!(:user) { User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
+  let!(:user) { User.new(name: "Example User", nickname: "example", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
 
   it "should be valid" do
     expect(user).to be_valid

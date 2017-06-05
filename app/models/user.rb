@@ -14,6 +14,7 @@ class User < ApplicationRecord
   before_save   :downcase_email
   before_create :create_activation_digest
   validates :name,  presence: true, length: { maximum: 50 }
+  validates :nickname, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
@@ -70,9 +71,9 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
-  def feed
+  def feed(user)
     following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-    Micropost.includes(:user).where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+    Micropost.includes(:user).where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id).including_replies(user)
   end
 
   def follow(other_user)

@@ -31,5 +31,11 @@ FactoryGirl.define do
       created_at Time.current
       user_id 4
     end
+
+    factory :reply do
+      content "@archer hello archer"
+      created_at Time.current
+      user_id 1
+    end
   end
 end
