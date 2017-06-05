@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user,      only: %w[show edit update destroy following followers microposts microposts_feed]
   before_action :correct_user,  only: %w[edit update]
   before_action :admin_user,    only: %w[destroy]
-  permits :name, :email, :password, :password_confirmation
+  permits :name, :nickname, :email, :password, :password_confirmation
 
   def index
     @users = User.page params[:page]

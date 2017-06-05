@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :user do
     sequence(:name) { |n| "User #{n}" }
+    sequence(:nickname) { |n| "user#{n}" }
     sequence(:email) { |n| "user-#{n}@example.com" }
     password "password"
     password_digest User.digest("password")
@@ -10,6 +11,7 @@ FactoryGirl.define do
     factory :michael do
       id 1
       name "Michael Example"
+      nickname "michael"
       email "michael@example.com"
       admin true
     end
@@ -17,12 +19,14 @@ FactoryGirl.define do
     factory :archer do
       id 2
       name "Sterling Archer"
+      nickname "archer"
       email "duchess@example.gov"
     end
 
     factory :lana do
       id 3
       name "Lana Kane"
+      nickname "lana"
       email "hands@example.gov"
       activated false
     end

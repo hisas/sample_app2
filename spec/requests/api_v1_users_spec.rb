@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe "Users" do
-  let(:valid_params) { { name: "hisas", email: "hisas@gmail.com", password: "foobar", password_confirmation: "foobar" } }
-  let(:invalid_params) { { name: "", email: "", password: "", password_confirmation: "" } }
+  let(:valid_params) { { name: "Hisashi Kamezawa", nickname: "hisas", email: "hisas@gmail.com", password: "foobar", password_confirmation: "foobar" } }
+  let(:invalid_params) { { name: "", nickname: "", email: "", password: "", password_confirmation: "" } }
   let!(:michael) { create(:michael) }
   let!(:users) { create_list(:user, 30) }
   subject(:json) { JSON.parse(response.body) }
