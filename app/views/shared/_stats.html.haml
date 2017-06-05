@@ -1,5 +1,9 @@
 - @user ||= current_user
 .stats
+  %a{:href => "#{user_path(@user)}"}
+    %strong#following.stat
+      = @user.microposts.count
+    posts
   %a{:href => "#{following_user_path(@user)}"}
     %strong#following.stat
       = @user.following.count

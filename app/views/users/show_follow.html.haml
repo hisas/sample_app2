@@ -3,11 +3,8 @@
   %aside.col-md-4
     %section.user_info
       = gravatar_for @user
-      %h1= @user.name
-      %span= link_to "view my profile", @user
-      %span
-        %b Microposts:
-        = @user.microposts.count
+      %h1= link_to @user.name, @user
+      %span= "@#{current_user.nickname}"
     %section.stats
       = render 'shared/stats'
       - if @users.any?
