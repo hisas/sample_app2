@@ -19,8 +19,7 @@ class Micropost < ApplicationRecord
   end
 
   def liked_users
-    ids = []
-    likes.each { |like| ids << like.user_id }
+    ids = likes.inject([]) { |ids, like| ids << like.user_id }
     User.where(id: ids)
   end
 
