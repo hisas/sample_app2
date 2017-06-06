@@ -93,8 +93,7 @@ class User < ApplicationRecord
   end
 
   def liked_microposts
-    ids = []
-    likes.each { |like| ids << like.micropost_id }
+    ids = likes.inject([]) { |ids, like| ids << like.micropost_id }
     Micropost.includes(:user).where(id: ids)
   end
 
