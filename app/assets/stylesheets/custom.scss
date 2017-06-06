@@ -297,6 +297,9 @@ input {
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    background-color: white;
   }
   .user {
     margin-top: 5em;
@@ -304,6 +307,7 @@ input {
   }
   .content {
     display: block;
+    padding: 5px 0;
     img {
       display: block;
       padding: 5px 0;
@@ -338,10 +342,11 @@ input {
     vertical-align: top;
     width: 50px;
     height: 50px;
+    margin-left: 10px;
   }
   .user_info {
     display: inline-block;
-    width: calc(100% - 60px);
+    width: calc(100% - 70px);
     margin-left: 5px;
   }
 }
@@ -368,5 +373,55 @@ div.micropost_search {
     position: absolute;
     bottom: 15px;
     right: 0px;
+  }
+}
+
+
+/* reply */
+div.reply_container {
+  padding: 0 25%;
+  h3 {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .micropost, .reply {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    background-color: white;
+    .user_avatar {
+      display: inline-block;
+      vertical-align: top;
+      width: 50px;
+      height: 50px;
+      margin-left: 10px;
+
+    }
+    .user_info {
+      display: inline-block;
+      width: calc(100% - 70px);
+      margin-left: 5px;
+      .user {
+        margin-top: 5em;
+        padding-top: 0;
+      }
+      .content {
+        display: block;
+        padding: 5px 0;
+        img {
+          display: block;
+          padding: 5px 0;
+        }
+      }
+      .timestamp {
+        color: $gray-light;
+        margin-left: 10px;
+      }
+    }
+  }
+  .field {
+    margin-top: 25px;
   }
 }

@@ -1,0 +1,17 @@
+.reply_container
+  %h3 Reply to #{@micropost.user.name}
+  
+  .before_reply
+    - if @before_reply.present?
+      = render 'reply', reply: @before_reply
+
+  .micropost
+    = render 'micropost'
+
+  .reply_form
+    = render 'reply_form'
+      
+  .after_replies
+    - if @after_replies.any?
+      - @after_replies.each do |reply|
+        = render 'reply', reply: reply

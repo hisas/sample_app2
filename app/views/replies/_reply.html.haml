@@ -1,0 +1,11 @@
+.reply
+  .user_avatar
+    = link_to gravatar_for(reply.user, size: 50), reply.user
+  .user_info
+    %span.user= link_to reply.user.name, reply.user
+    %span.nickname= "@#{reply.user.nickname}"
+    %span.timestamp
+      Posted #{time_ago_in_words(reply.created_at)} ago.
+    %span.content
+      = reply.content
+      = image_tag reply.picture.url if reply.picture?
