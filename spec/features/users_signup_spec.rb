@@ -10,20 +10,20 @@ describe "users signup" do
 
   it "should test invalid signup information" do
     expect {
-      fill_in "Name", with: ""
-      fill_in "Email", with: "user@invalid"
-      fill_in "Password", with: "foo"
-      fill_in "Confirmation", with: "bar"
+      fill_in "user[name]", with: ""
+      fill_in "user[email]", with: "user@invalid"
+      fill_in "user[password]", with: "foo"
+      fill_in "user[password_confirmation]", with: "bar"
       click_on "Create my account"
     }.to change { User.count }.by(0)
   end
 
   it "should test valid signup information" do
     expect {
-      fill_in "Name", with: "Example User"
-      fill_in "Email", with: "user@example.com"
-      fill_in "Password", with: "password"
-      fill_in "Confirmation", with: "password"
+      fill_in "user[name]", with: "Example User"
+      fill_in "user[email]", with: "user@example.com"
+      fill_in "user[password]", with: "password"
+      fill_in "user[password_confirmation]", with: "password"
       click_on "Create my account"
     }.to change { User.count }.by(1)
     expect(ActionMailer::Base.deliveries.size).to eq 1

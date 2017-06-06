@@ -8,8 +8,8 @@ describe "users login" do
   end
 
   it "should login with invalid information" do
-    fill_in "Email", with: ""
-    fill_in "Password", with: ""
+    fill_in "session[email]", with: ""
+    fill_in "session[password]", with: ""
     click_button "Log in"
     expect(page).to have_content "Invalid email/password combination"
     visit root_path
@@ -17,8 +17,8 @@ describe "users login" do
   end
 
   it "should login with valid information followed by logout" do
-    fill_in "Email", with: michael.email
-    fill_in "Password", with: "password"
+    fill_in "session[email]", with: michael.email
+    fill_in "session[password]", with: "password"
     click_button "Log in"
     expect(page).not_to have_link "Log in", href: login_path
     expect(page).to have_link "Log out", href: logout_path
@@ -31,16 +31,16 @@ describe "users login" do
   end
 
   it "login with remembering" do
-    fill_in "Email", with: michael.email
-    fill_in "Password", with: "password"
+    fill_in "session[email]", with: michael.email
+    fill_in "session[password]", with: "password"
     check "Remember me on this computer"
     click_button "Log in"
     expect(get_me_the_cookie("remember_token")).not_to eq nil
   end
 
   it "login without remembering" do
-    fill_in "Email", with: michael.email
-    fill_in "Password", with: "password"
+    fill_in "session[email]", with: michael.email
+    fill_in "session[password]", with: "password"
     click_button "Log in"
     expect(get_me_the_cookie("remember_token")).to eq nil
   end
