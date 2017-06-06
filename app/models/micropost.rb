@@ -4,7 +4,7 @@ class Micropost < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
   scope :content_like, ->(content) { where("content LIKE ?", "%#{sanitize_sql_like(content)}%") }
-  scope :including_replies, ->(user) { where("reply_nickname is ? OR reply_nickname = ? OR user_id = ?", nil, "@#{user.nickname}", user.id) }
+  scope :including_replies, ->(user) { where("reply_nickname IS ? OR reply_nickname = ? OR user_id = ?", nil, "@#{user.nickname}", user.id) }
 
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }

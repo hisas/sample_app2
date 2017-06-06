@@ -22,12 +22,12 @@ class MicropostsController < ApplicationController
 
   def search
     @micropost  = current_user.microposts.build
-    @feed_items = Micropost.includes(:user).content_like(params[:content]).page params[:page]
+    @feed_items = Micropost.includes(:user).content_like(params[:content]).page(params[:page])
   end
 
   def likes
     @micropost  = current_user.microposts.build
-    @feed_items = current_user.liked_microposts.page params[:page]
+    @feed_items = current_user.liked_microposts.page(params[:page])
   end
 
   private

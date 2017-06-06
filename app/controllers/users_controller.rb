@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   permits :name, :nickname, :email, :password, :password_confirmation
 
   def index
-    @users = User.page params[:page]
+    @users = User.page(params[:page])
   end
 
   def show
-    @microposts = @user.microposts.page params[:page]
+    @microposts = @user.microposts.page(params[:page])
   end
 
   def new
@@ -49,22 +49,22 @@ class UsersController < ApplicationController
 
   def following
     @title = "Following"
-    @users = @user.following.page params[:page]
+    @users = @user.following.page(params[:page])
     render "show_follow"
   end
 
   def followers
     @title = "Followers"
-    @users = @user.followers.page params[:page]
+    @users = @user.followers.page(params[:page])
     render "show_follow"
   end
 
   def search
-    @users = User.name_like(params[:name]).page params[:page]
+    @users = User.name_like(params[:name]).page(params[:page])
   end
 
   def microposts
-    @microposts = @user.microposts.content_like(params[:content]).page params[:page]
+    @microposts = @user.microposts.content_like(params[:content]).page(params[:page])
   end
 
   def microposts_feed
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
 
   def likes
     @user = current_user
-    @microposts = current_user.liked_microposts.page params[:page]
+    @microposts = current_user.liked_microposts.page(params[:page])
   end
 
   private
