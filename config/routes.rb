@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :microposts, only: %i(create destroy) do
     resources :likes, only: %i(create destroy)
+    resources :replies, only: %i(new create)
     collection do
       get :search, :likes
     end

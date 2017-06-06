@@ -37,5 +37,20 @@ FactoryGirl.define do
       created_at Time.current
       user_id 1
     end
+
+    factory :postA do
+      id 5000
+      content "このツイートに返信してくれたら5000兆円あげます。"
+      created_at Time.current
+      user_id 1
+    end
+
+    factory :postB do
+      content "5000兆円欲しいです！"
+      created_at Time.current
+      user_id 1
+      reply_nickname "michael"
+      reply_micropost 5000
+    end
   end
 end
