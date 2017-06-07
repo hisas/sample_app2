@@ -13,13 +13,13 @@ describe "microposts interface" do
     expect(page).to have_selector "nav.pagination"
     # 無効な送信
     expect {
-      fill_in "micropost_content", with: ""
+      fill_in "micropost[content]", with: ""
       click_button "Post"
     }.to change { Micropost.count }.by(0)
     expect(page).to have_selector "div#error_explanation"
     # 有効な送信
     expect {
-      fill_in "micropost_content", with: "This micropost really ties the room together"
+      fill_in "micropost[content]", with: "This micropost really ties the room together"
       click_button "Post"
     }.to change { Micropost.count }.by(1)
     expect(current_path).to eq root_path

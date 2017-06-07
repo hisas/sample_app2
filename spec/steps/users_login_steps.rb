@@ -10,13 +10,13 @@ step "ユーザーがログインページにアクセスする" do
 end
 
 step "有効なメールアドレスとパスワードを入力する" do
-  fill_in "Email", with: @user.email
-  fill_in "Password", with: "password"
+  fill_in "session[email]", with: @user.email
+  fill_in "session[password]", with: "password"
 end
 
 step "有効ではないメールアドレスとパスワードを入力する" do
-  fill_in "Email", with: ""
-  fill_in "Password", with: ""
+  fill_in "session[email]", with: ""
+  fill_in "session[password]", with: ""
 end
 
 step "ログインボタンをクリックする" do

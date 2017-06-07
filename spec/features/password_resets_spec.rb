@@ -10,11 +10,11 @@ describe "password_resets" do
   it "password resets" do
     visit new_password_reset_path
     # メールアドレスが無効
-    fill_in "Email", with: ""
+    fill_in "password_reset[email]", with: ""
     click_button "Submit"
     expect(page).to have_content "Email address not found"
     # メールアドレスが有効
-    fill_in "Email", with: michael.email
+    fill_in "password_reset[email]", with: michael.email
     click_button "Submit"
     expect(michael.reset_digest).not_to eq michael.reload.reset_digest
     expect(ActionMailer::Base.deliveries.size).to eq 1

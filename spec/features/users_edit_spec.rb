@@ -9,20 +9,20 @@ describe "users edit" do
 
   it "unsuccessful edit" do
     visit edit_user_path(michael)
-    fill_in "Name", with: ""
-    fill_in "Email", with: "foo@invalid"
-    fill_in "Password", with: "foo"
-    fill_in "Confirmation", with: "bar"
+    fill_in "user[name]", with: ""
+    fill_in "user[email]", with: "foo@invalid"
+    fill_in "user[password]", with: "foo"
+    fill_in "user[password_confirmation]", with: "bar"
     click_on "Save changes"
     expect(current_path).to eq(user_path(michael))
   end
 
   it "successful edit with friendly forwarding" do
     visit edit_user_path(michael)
-    fill_in "Name", with: "Foo Bar"
-    fill_in "Email", with: "foo@bar.com"
-    fill_in "Password", with: ""
-    fill_in "Confirmation", with: ""
+    fill_in "user[name]", with: "Foo Bar"
+    fill_in "user[email]", with: "foo@bar.com"
+    fill_in "user[password]", with: ""
+    fill_in "user[password_confirmation]", with: ""
     click_on "Save changes"
     expect(page).to have_content "Profile updated"
     michael.reload
