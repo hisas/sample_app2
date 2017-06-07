@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :set_micropost, only: %w[create destroy]
+  before_action :set_micropost, only: %i(create destroy)
 
   def create
     Like.create(user_id: current_user.id, micropost_id: params[:micropost_id])

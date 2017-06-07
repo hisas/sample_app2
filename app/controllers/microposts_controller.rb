@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
-  before_action :require_login, only: %w[create destroy]
-  before_action :correct_user,  only: %w[destroy]
+  before_action :require_login, only: %i(create destroy)
+  before_action :correct_user,  only: %i(destroy)
   permits :content, :picture
 
   def create(micropost)

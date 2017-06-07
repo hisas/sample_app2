@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
-  before_action :get_user,         only: %w[edit update]
-  before_action :valid_user,       only: %w[edit update]
-  before_action :check_expiration, only: %w[edit update]
+  before_action :get_user,         only: %i(edit update)
+  before_action :valid_user,       only: %i(edit update)
+  before_action :check_expiration, only: %i(edit update)
   permits :password, :password_confirmation
 
   def new

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: %w[index edit update destroy following followers]
-  before_action :set_user,      only: %w[show edit update destroy following followers microposts microposts_feed likes]
-  before_action :correct_user,  only: %w[edit update]
-  before_action :admin_user,    only: %w[destroy]
+  before_action :require_login, only: %i(index edit update destroy following followers)
+  before_action :set_user,      only: %i(show edit update destroy following followers microposts microposts_feed likes)
+  before_action :correct_user,  only: %i(edit update)
+  before_action :admin_user,    only: %i(destroy)
   permits :name, :nickname, :email, :password, :password_confirmation
 
   def index
