@@ -9,7 +9,7 @@ describe "likes" do
     log_in_as(michael)
     visit root_path
     find("#button_#{micropost1.id}").click
-    visit likes_microposts_path
+    visit likes_user_path(michael)
   end
 
   specify "Likesボタンを押すといいねを押した投稿一覧が表示されること" do

@@ -12,7 +12,7 @@
     %strong#followers.stat
       = @user.followers.count
     followers
-  %a{:href => "#{likes_microposts_path}"}
+  %a{:href => "#{likes_user_path(@user)}"}
     %strong#likes.stat
       = @user.likes.count
     likes
