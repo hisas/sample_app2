@@ -14,10 +14,11 @@ Rails.application.routes.draw do
       get :following,
           :followers,
           :microposts,
-          :microposts_feed
+          :microposts_feed,
+          :likes
     end
     collection do
-      get :search, :likes
+      get :search
     end
   end
 
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
     resources :likes, only: %i(create destroy)
     resources :replies, only: %i(new create)
     collection do
-      get :search, :likes
+      get :search
     end
   end
 

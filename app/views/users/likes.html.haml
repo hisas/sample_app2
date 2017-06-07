@@ -1,4 +1,4 @@
-- provide(:title, @user.name)
+- provide(:title, "Likes")
 .row
   %aside.col-md-4
     %section.user_info
@@ -17,5 +17,3 @@
       %ol.microposts
         = render @microposts
       = paginate @microposts
-    - else
-      %h3 no match for #{params[:content]}

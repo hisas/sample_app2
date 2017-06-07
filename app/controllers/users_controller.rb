@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %w[index edit update destroy following followers]
-  before_action :set_user,      only: %w[show edit update destroy following followers microposts microposts_feed]
+  before_action :set_user,      only: %w[show edit update destroy following followers microposts microposts_feed likes]
   before_action :correct_user,  only: %w[edit update]
   before_action :admin_user,    only: %w[destroy]
   permits :name, :nickname, :email, :password, :password_confirmation
@@ -74,8 +74,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @user = current_user
-    @microposts = current_user.liked_microposts.page(params[:page])
+    @microposts = @user.liked_microposts.page(params[:page])
   end
 
   private

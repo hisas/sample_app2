@@ -25,11 +25,6 @@ class MicropostsController < ApplicationController
     @feed_items = Micropost.includes(:user).content_like(params[:content]).page(params[:page])
   end
 
-  def likes
-    @micropost  = current_user.microposts.build
-    @feed_items = current_user.liked_microposts.page(params[:page])
-  end
-
   private
     def correct_user
       @micropost = current_user.microposts.find_by(id: params[:id])
