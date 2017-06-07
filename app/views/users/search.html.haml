@@ -1,9 +1,9 @@
 - provide(:title, "Search result for #{params[:name]}")
 %h1 Search result for #{params[:name]}
-= form_with(url: "users/search", method: :get, skip_enforcing_utf8: true) do
-  = label_tag :name, "Name"
-  = text_field_tag :name, '', placeholder: "Please enter name"
-  = submit_tag  'Search'
+= form_with(url: search_users_path, method: :get, data: { remote: false }, skip_enforcing_utf8: true) do |f|
+  = f.label :name
+  = f.text_field :name, placeholder: "Please enter name"
+  = f.submit 'Search', name: nil
 - if @users.present?
   = paginate @users
   %ul.users

@@ -1,10 +1,10 @@
 - if @feed_items.nil?
-  = form_with(url: "/users/#{@user.id}/microposts/", method: :get, skip_enforcing_utf8: true) do
+  = form_with(url: microposts_user_path(@user), method: :get, data: { remote: false }, skip_enforcing_utf8: true) do
     = label_tag :content, "Content"
     = text_field_tag :content, '', placeholder: "Please enter content"
-    = submit_tag  'Search'
+    = submit_tag  'Search', name: nil
 - else
-  = form_with(url: "/microposts/search", method: :get, skip_enforcing_utf8: true) do
+  = form_with(url: search_microposts_path, method: :get, data: { remote: false }, skip_enforcing_utf8: true) do
     = label_tag :content, "Content"
     = text_field_tag :content, '', placeholder: "Please enter content"
-    = submit_tag  'Search'
+    = submit_tag  'Search', name: nil
