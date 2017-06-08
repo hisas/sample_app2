@@ -1,0 +1,5 @@
+%h1 Add room
+= form_with(model: @room) do |f|
+  = f.label :nickname
+  = f.text_field :other_user_id, class: 'form-control'
+  = f.submit "Add", class: 'btn btn-primary'

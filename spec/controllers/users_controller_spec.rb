@@ -14,7 +14,6 @@ describe UsersController do
 
   it "should redirect edit when not logged in" do
     visit edit_user_path(michael)
-    expect(page).to have_content "Please log in."
     expect(current_path).to eq(login_path)
   end
 

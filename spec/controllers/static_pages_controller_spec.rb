@@ -3,6 +3,12 @@ require "rails_helper"
 describe StaticPagesController do
   render_views
 
+  let!(:michael) { create(:michael) }
+
+  before do
+    log_in_as(michael)
+  end
+
   it "should get home" do
     visit root_path
     expect(page).to have_http_status(:success)

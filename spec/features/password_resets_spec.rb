@@ -4,6 +4,7 @@ describe "password_resets" do
   let!(:michael) { create(:michael) }
 
   before do
+    log_in_as(michael)
     ActionMailer::Base.deliveries.clear
   end
 

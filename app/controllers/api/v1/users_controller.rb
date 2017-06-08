@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   http_basic_authenticate_with name: ENV["BASIC_AUTH_NAME"], password: ENV["BASIC_AUTH_PASSWORD"]
 
+  skip_before_action :ensure_authenticated_user
   before_action :set_user, only: %i(show edit update destroy)
 
   def index

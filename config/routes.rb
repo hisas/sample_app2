@@ -40,9 +40,13 @@ Rails.application.routes.draw do
   resources :password_resets,     only: %i(new create edit update)
   resources :relationships,       only: %i(create destroy)
 
+  resources :rooms, only: %i(new create show index)
+
   namespace :api, format: :json do
     namespace :v1 do
       resources :users
     end
   end
+
+  mount ActionCable.server => "/cable"
 end
