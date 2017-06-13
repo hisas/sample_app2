@@ -1,0 +1,8 @@
+%h1= "@#{room_name(@room)}"
+#messages{"data-room-id" => "#{@room.id}"}
+  = render @room.messages
+= form_with(model: @message, url: '#', id: 'new_message') do |f|
+  = hidden_field_tag 'room_id', @room.id
+  .form-group
+    = f.text_area :content, class: 'form-control', id: 'message_content'
+  = f.submit "Post", class: 'btn btn-primary btn-lg'

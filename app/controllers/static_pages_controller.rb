@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  skip_before_action :ensure_authenticated_user, only: :home
+
   def home
     if logged_in?
       @micropost  = current_user.microposts.build

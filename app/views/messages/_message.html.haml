@@ -1,0 +1,11 @@
+.card
+  .card-block
+    .row
+      .col-md-1
+        = gravatar_for message.user
+      .col-md-11
+        %p.card-text
+          %span.text-muted
+            = "#{message.created_at.strftime("%p %I:%M")}"
+          %br/
+          = message.content

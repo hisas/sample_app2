@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :ensure_authenticated_user, only: %i(new create microposts_feed)
   before_action :require_login, only: %i(index edit update destroy following followers)
   before_action :set_user,      only: %i(show edit update destroy following followers microposts microposts_feed likes)
   before_action :correct_user,  only: %i(edit update)
