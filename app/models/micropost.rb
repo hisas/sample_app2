@@ -19,7 +19,7 @@ class Micropost < ApplicationRecord
   end
 
   def liked_users
-    ids = likes.map { |like| like.user_id }
+    ids = likes.map(&:user_id)
     User.where(id: ids)
   end
 

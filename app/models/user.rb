@@ -95,7 +95,7 @@ class User < ApplicationRecord
   end
 
   def liked_microposts
-    ids = likes.map { |like| like.micropost_id }
+    ids = likes.map(&:micropost_id)
     Micropost.includes(:user).where(id: ids)
   end
 
