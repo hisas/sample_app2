@@ -31,32 +31,32 @@ describe "direct message" do
     end
   end
 
-  # describe "MichaelがArcherと会話する", js: true do
-  #   let!(:room) { michael.rooms.create(other_user_id: archer.id) }
-  #
-  #   before do
-  #     log_in_as(michael)
-  #     visit room_path(room)
-  #   end
-  #
-  #   context "2文字以上入力する場合" do
-  #     specify "メッセージを送信できること" do
-  #       expect {
-  #         fill_in "message[content]", with: "Hello Archer"
-  #         click_button "Post"
-  #       }.to change { Message.count }.by(1)
-  #       expect(page).to have_content "Hello Archer"
-  #     end
-  #   end
-  #
-  #   context "1文字以下入力する場合" do
-  #     specify "メッセージを送信できないこと" do
-  #       expect {
-  #         fill_in "message[content]", with: "a"
-  #         click_button "Post"
-  #       }.to change { Message.count }.by(0)
-  #       expect(page).not_to have_content "a"
-  #     end
-  #   end
-  # end
+  describe "MichaelがArcherと会話する", js: true do
+    let!(:room) { michael.rooms.create(other_user_id: archer.id) }
+
+    before do
+      log_in_as(michael)
+      visit room_path(room)
+    end
+
+    context "2文字以上入力する場合" do
+      xit "メッセージを送信できること" do
+        expect {
+          fill_in "message[content]", with: "Hello Archer"
+          click_button "Post"
+        }.to change { Message.count }.by(1)
+        expect(page).to have_content "Hello Archer"
+      end
+    end
+
+    context "1文字以下入力する場合" do
+      xit "メッセージを送信できないこと" do
+        expect {
+          fill_in "message[content]", with: "a"
+          click_button "Post"
+        }.to change { Message.count }.by(0)
+        expect(page).not_to have_content "a"
+      end
+    end
+  end
 end
