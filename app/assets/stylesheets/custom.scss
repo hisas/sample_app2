@@ -423,3 +423,13 @@ div.reply_container {
   background-color: white;
   margin-bottom: 25px;
 }
+
+.btn-twitter {
+  color: white;
+  background-color: #55ACEE;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 0.75;
+  }
+}

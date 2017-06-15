@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :ensure_authenticated_user, only: %i(new create)
+  skip_before_action :ensure_authenticated_user, only: %i(new create create_by_twitter)
 
   def new
   end
@@ -23,6 +23,14 @@ class SessionsController < ApplicationController
       flash.now[:danger] = "Invalid email/password combination"
       render "new"
     end
+  end
+
+  def create_by_twitter
+    user = User.find_or_create_from_auth(request.env["omniauth.auth"])
+    user.activate
+    log_in user
+    authenticate_user(user.id)
+    redirect_back_or user
   end
 
   def destroy

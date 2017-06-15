@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608072436) do
+ActiveRecord::Schema.define(version: 20170614023916) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170608072436) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.string "email", null: false
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -76,6 +76,9 @@ ActiveRecord::Schema.define(version: 20170608072436) do
     t.datetime "reset_sent_at"
     t.boolean "allow_followed_notification", default: false, null: false
     t.string "nickname", null: false
+    t.string "provider"
+    t.string "twitter_uid"
+    t.string "twitter_image_url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
