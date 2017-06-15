@@ -10,6 +10,16 @@ require "capybara/rails"
 
 Dir.glob("spec/steps/**/*steps.rb") { |f| load f, true }
 
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(  provider: "twitter",
+  uid: "123545",
+  "info" => {
+      "name"  => "Mock",
+      "email"  => "mock@example.com",
+      "nickname"  => "mock",
+      "twitter_image_url" => "http://mock_image_url.com"
+    })
+
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
 end

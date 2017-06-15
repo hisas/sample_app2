@@ -43,5 +43,14 @@ FactoryGirl.define do
       email "hisas@example.gov"
       allow_followed_notification true
     end
+
+    factory :mock do
+      id 6
+      name "Mock"
+      email "mock@example.com"
+      nickname "mock"
+      provider "twitter"
+      twitter_uid 123545
+    end
   end
 end

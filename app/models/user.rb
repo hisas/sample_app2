@@ -18,11 +18,9 @@ class User < ApplicationRecord
   validates :name,  presence: true, length: { maximum: 50 }
   validates :nickname, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_nil: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true , if: :password_required?
   scope :name_like, ->(name) { where("name LIKE ?", "%#{sanitize_sql_like(name)}%") }
 
   def self.digest(string)
@@ -99,13 +97,26 @@ class User < ApplicationRecord
     Micropost.includes(:user).where(id: ids)
   end
 
+  def self.find_or_create_from_auth(auth)
+    self.find_or_create_by(provider: auth[:provider], twitter_uid: auth[:uid]) do |user|
+      user.name = auth[:info][:name]
+      user.email = auth[:info][:email]
+      user.nickname = auth[:info][:nickname]
+      user.twitter_image_url = auth[:info][:image]
+    end
+  end
+
   private
     def downcase_email
-      self.email = email.downcase
+      self.email = email.downcase unless self.email == nil
     end
 
     def create_activation_digest
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    def password_required?
+      !persisted? || !password.nil? || !password_confirmation.nil? && provider.blank?
     end
 end
