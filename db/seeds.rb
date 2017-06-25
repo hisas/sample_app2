@@ -1,3 +1,5 @@
+Faker::Config.locale = :ja
+
 User.create!(name:  "Example User",
              nickname: "example",
              email: "example@railstutorial.org",
@@ -9,7 +11,7 @@ User.create!(name:  "Example User",
 
 99.times do |n|
   name  = Faker::Name.name
-  nickname = "example-#{n+1}"
+  nickname = Faker::Internet.user_name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name:  name,
@@ -23,7 +25,7 @@ end
 
 users = User.order(:created_at).take(6)
 50.times do
-  content = Faker::Lorem.sentence(5)
+  content = Yoshida::Text.sentence
   users.each { |user| user.microposts.create!(content: content) }
 end
 

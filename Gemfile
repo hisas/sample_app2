@@ -26,12 +26,12 @@ gem "rails", "~> 5.1.2.rc1"
 gem "redis"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "yoshida"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara"
   gem "factory_girl_rails"
-  gem "gimei"
   gem "guard-rspec", require: false
   gem "pry-byebug"
   gem "pry-rails"
