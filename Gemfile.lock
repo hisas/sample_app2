@@ -255,6 +255,7 @@ GEM
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
     gherkin (4.1.3)
+    gimei (0.2.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     guard (2.14.1)
@@ -495,6 +496,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   fog
+  gimei
   guard
   guard-minitest
   guard-rspec

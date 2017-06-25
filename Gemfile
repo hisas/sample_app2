@@ -31,6 +31,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara"
   gem "factory_girl_rails"
+  gem "gimei"
   gem "guard-rspec", require: false
   gem "pry-byebug"
   gem "pry-rails"
