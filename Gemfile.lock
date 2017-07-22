@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/haml/haml.git
-  revision: d978bc1ac77b69208605a0840e4fe43284051efb
+  revision: 965e66eb6ba5bbd8b4d89ba8cc60e2a05c658855
   specs:
     haml (5.0.1)
       temple (>= 0.8.0)
@@ -63,7 +63,7 @@ GEM
     ansi (1.5.0)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.1.2.1)
+    autoprefixer-rails (7.1.2.3)
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -72,7 +72,7 @@ GEM
       sass (>= 3.3.4)
     brakeman (3.7.0)
     builder (3.2.3)
-    bullet (5.5.1)
+    bullet (5.6.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
@@ -274,7 +274,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    hashie (3.5.5)
+    hashie (3.5.6)
     i18n (0.8.6)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -426,10 +426,14 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
-    ruby_parser (3.9.0)
-      sexp_processor (~> 4.1)
-    sass (3.4.25)
-    sexp_processor (4.9.0)
+    ruby_parser (3.10.0)
+      sexp_processor (~> 4.9)
+    sass (3.5.1)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+    sexp_processor (4.10.0)
     shellany (0.0.1)
     show_me_the_cookies (3.1.0)
       capybara (~> 2.0)
