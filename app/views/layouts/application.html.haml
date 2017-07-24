@@ -4,8 +4,11 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title= full_title(yield(:title))
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', |
-      'data-turbolinks-track': 'reload'                   |
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    - if request.smart_phone? || request.mobile?
+      = stylesheet_link_tag 'inside/mobile', media: 'all'
+    - else
+      = stylesheet_link_tag 'inside/custom', media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = render 'layouts/shim'
   %body
