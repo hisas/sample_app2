@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: mv config/database.ci.yml config/database.yml
+      - run: bundle install
+  test:
+    machine: true
+    steps:
+      - checkout
+      - run: bundle exec rails db:create db:schema:load RAILS_ENV=test
+      - run: bundle exec rails db:migrate RAILS_ENV=test
+      - run: bundle exec rspec spec/
+      - run: bundle exec rubocop -c .rubocop.yml
+      - run: bundle exec brakeman
