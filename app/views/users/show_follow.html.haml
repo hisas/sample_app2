@@ -15,5 +15,6 @@
     %h3= @title
     - if @users.any?
       %ul.users.follow
-        = render @users
+        - @users.each do |user|
+          = render 'users/user', user: user
       = paginate @users
