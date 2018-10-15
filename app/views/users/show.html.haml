@@ -15,5 +15,6 @@
         = render 'shared/search'
       %h3　Microposts (#{@user.microposts.count})
       %ol.microposts
-        = render @microposts
+        - @microposts.each do |micropost|
+          = render 'microposts/micropost', micropost: micropost
       = paginate @microposts

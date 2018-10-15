@@ -15,7 +15,8 @@
     %h3 Microposts (#{@microposts.count})
     - if @microposts.any?
       %ol.microposts
-        = render @microposts
+        - @microposts.each do |micropost|
+          = render 'microposts/micropost', micropost: micropost
       = paginate @microposts
     - else
       %h3 no match for #{params[:content]}
